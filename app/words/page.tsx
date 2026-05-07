@@ -10,9 +10,14 @@ interface Word {
 export default async function Words({
   searchParams,
 }: {
-  searchParams: { domain?: string };
+  searchParams: Promise<{ domain?: string }>;
 }) {
-  const domain = searchParams.domain;
+  const { domain } = await searchParams;
+
+  const domainsRes = await fetch("http://localhost:3000/api/domains", {
+    cache: "no-store",
+  });
+  const domains: string[] = await domainsRes.json();
 
   let words: Word[] = [];
   let title = "All Words";
@@ -29,11 +34,6 @@ export default async function Words({
     }
     title = `Words in ${domain}`;
   } else {
-    // Fetch all domains
-    const domainsRes = await fetch("http://localhost:3000/api/domains", {
-      cache: "no-store",
-    });
-    const domains: string[] = await domainsRes.json();
     for (const d of domains) {
       const res = await fetch(`http://localhost:3000/api/words?domain=${d}`, {
         cache: "no-store",
@@ -49,21 +49,50 @@ export default async function Words({
     <div className="min-h-screen bg-slate-50 p-8 text-slate-900">
       <div className="mx-auto max-w-5xl space-y-8">
         <section className="rounded-[2rem] bg-white p-8 shadow-xl shadow-slate-200 ring-1 ring-slate-200">
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-sky-600">
-                {domain ? "Domain words" : "All words"}
-              </p>
-              <h1 className="mt-2 text-4xl font-semibold text-slate-950">
-                {title}
-              </h1>
+          <div className="flex flex-col gap-6 sm:gap-4">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <p className="text-sm font-semibold uppercase tracking-[0.3em] text-sky-600">
+                  {domain ? "Domain words" : "All words"}
+                </p>
+                <h1 className="mt-2 text-4xl font-semibold text-slate-950">
+                  {title}
+                </h1>
+              </div>
+              <Link
+                href="/"
+                className="inline-flex items-center justify-center rounded-full bg-sky-600 px-5 py-3 text-sm font-semibold text-white shadow-sm shadow-sky-500/20 transition hover:bg-sky-700"
+              >
+                Back to Home
+              </Link>
             </div>
-            <Link
-              href="/"
-              className="inline-flex items-center justify-center rounded-full bg-sky-600 px-5 py-3 text-sm font-semibold text-white shadow-sm shadow-sky-500/20 transition hover:bg-sky-700"
+            <form
+              method="get"
+              className="flex flex-col gap-3 sm:flex-row sm:items-center"
             >
-              Back to Home
-            </Link>
+              <label className="sr-only" htmlFor="domain-filter">
+                Filter domains
+              </label>
+              <select
+                id="domain-filter"
+                name="domain"
+                defaultValue={domain ?? ""}
+                className="rounded-2xl border border-slate-300 bg-slate-50 px-4 py-3 text-slate-900 outline-none transition focus:border-sky-500 focus:ring-2 focus:ring-sky-100"
+              >
+                <option value="">All domains</option>
+                {domains.map((d) => (
+                  <option key={d} value={d}>
+                    {d}
+                  </option>
+                ))}
+              </select>
+              <button
+                type="submit"
+                className="inline-flex items-center justify-center rounded-2xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white shadow-sm shadow-slate-400/20 transition hover:bg-slate-800"
+              >
+                Apply Filter
+              </button>
+            </form>
           </div>
         </section>
 
