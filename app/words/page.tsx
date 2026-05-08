@@ -189,17 +189,24 @@ export default async function Words({
                     </span>
                   ) : null}
                 </div>
-                <p className="mt-4 text-slate-700">{w.explanation}</p>
+                <div className="mt-4 rounded-xl bg-blue-50 p-4 text-slate-700 border border-blue-200 whitespace-pre-wrap break-words">
+                  {w.explanation}
+                </div>
                 {w.examples.length > 0 && (
                   <div className="mt-5 space-y-3">
                     <h3 className="text-sm font-semibold text-slate-900">
                       Examples
                     </h3>
-                    <ul className="list-disc list-inside space-y-2 text-slate-600">
+                    <div className="space-y-2">
                       {w.examples.map((ex, j) => (
-                        <li key={j}>{ex}</li>
+                        <div
+                          key={j}
+                          className="rounded-lg bg-amber-50 p-3 border border-amber-300 text-slate-700 whitespace-pre-wrap break-words"
+                        >
+                          • {ex}
+                        </div>
                       ))}
-                    </ul>
+                    </div>
                   </div>
                 )}
               </article>
