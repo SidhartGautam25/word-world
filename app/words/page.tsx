@@ -12,6 +12,7 @@ interface Word {
   domain?: string;
   language?: string;
   subDomain?: string;
+  date?: string;
 }
 
 export default async function Words({
@@ -173,6 +174,11 @@ export default async function Words({
                       {w.subDomain ? (
                         <span className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-emerald-700">
                           {w.subDomain}
+                        </span>
+                      ) : null}
+                      {w.date ? (
+                        <span className="rounded-full bg-slate-200 px-3 py-1 text-xs font-semibold text-slate-600">
+                          {new Date(w.date).toLocaleDateString()}
                         </span>
                       ) : null}
                     </div>

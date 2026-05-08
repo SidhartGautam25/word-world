@@ -74,6 +74,7 @@ export async function POST(request: NextRequest) {
       word,
       explanation,
       examples,
+      date: new Date().toISOString(),
     };
     if (language && typeof language === "string") {
       wordEntry.language = language;
