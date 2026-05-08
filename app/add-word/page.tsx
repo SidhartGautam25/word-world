@@ -6,7 +6,11 @@ import Link from "next/link";
 
 export default function AddWord() {
   const [domains, setDomains] = useState<string[]>([]);
+  const [languages, setLanguages] = useState<string[]>([]);
+  const [subDomains, setSubDomains] = useState<string[]>([]);
   const [domain, setDomain] = useState("");
+  const [language, setLanguage] = useState("");
+  const [subDomain, setSubDomain] = useState("");
   const [word, setWord] = useState("");
   const [explanation, setExplanation] = useState("");
   const [examples, setExamples] = useState<string[]>([""]);
@@ -17,7 +21,27 @@ export default function AddWord() {
     fetch("/api/domains")
       .then((res) => res.json())
       .then(setDomains);
+    fetch("/api/languages")
+      .then((res) => res.json())
+      .then(setLanguages);
   }, []);
+
+  useEffect(() => {
+    if (!domain) {
+      return;
+    }
+
+    fetch(`/api/sub-domains?domain=${encodeURIComponent(domain)}`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (Array.isArray(data)) {
+          setSubDomains(data.map((item: { name: string }) => item.name));
+        } else {
+          setSubDomains([]);
+        }
+        setSubDomain("");
+      });
+  }, [domain]);
 
   const addExample = () => {
     setExamples((current) => [...current, ""]);
@@ -35,6 +59,15 @@ export default function AddWord() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!language) {
+      const confirmed = window.confirm(
+        "You are adding this word without a language. Continue?",
+      );
+      if (!confirmed) {
+        return;
+      }
+    }
+
     setLoading(true);
     const examplesArray = examples
       .map((example) => example.trim())
@@ -48,6 +81,8 @@ export default function AddWord() {
           word,
           explanation,
           examples: examplesArray,
+          language,
+          subDomain,
         }),
       });
       if (res.ok) {
@@ -75,7 +110,14 @@ export default function AddWord() {
             </label>
             <select
               value={domain}
-              onChange={(e) => setDomain(e.target.value)}
+              onChange={(e) => {
+                const nextDomain = e.target.value;
+                setDomain(nextDomain);
+                if (!nextDomain) {
+                  setSubDomains([]);
+                  setSubDomain("");
+                }
+              }}
               className="w-full rounded-2xl border border-slate-300 bg-slate-50 px-4 py-3 text-slate-900 outline-none transition focus:border-sky-500 focus:ring-2 focus:ring-sky-100"
               required
             >
@@ -110,6 +152,40 @@ export default function AddWord() {
               rows={4}
               required
             />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-slate-700 mb-2">
+              Language (optional)
+            </label>
+            <select
+              value={language}
+              onChange={(e) => setLanguage(e.target.value)}
+              className="w-full rounded-2xl border border-slate-300 bg-slate-50 px-4 py-3 text-slate-900 outline-none transition focus:border-sky-500 focus:ring-2 focus:ring-sky-100"
+            >
+              <option value="">No language</option>
+              {languages.map((lang) => (
+                <option key={lang} value={lang}>
+                  {lang}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-slate-700 mb-2">
+              Sub-domain (optional)
+            </label>
+            <select
+              value={subDomain}
+              onChange={(e) => setSubDomain(e.target.value)}
+              className="w-full rounded-2xl border border-slate-300 bg-slate-50 px-4 py-3 text-slate-900 outline-none transition focus:border-sky-500 focus:ring-2 focus:ring-sky-100"
+            >
+              <option value="">No sub-domain</option>
+              {subDomains.map((sub) => (
+                <option key={sub} value={sub}>
+                  {sub}
+                </option>
+              ))}
+            </select>
           </div>
           <div className="space-y-4">
             <div className="flex items-center justify-between">

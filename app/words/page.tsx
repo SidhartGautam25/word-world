@@ -1,48 +1,66 @@
 import Link from "next/link";
 
+interface SubDomainEntry {
+  domain: string;
+  name: string;
+}
+
 interface Word {
   word: string;
   explanation: string;
   examples: string[];
   domain?: string;
+  language?: string;
+  subDomain?: string;
 }
 
 export default async function Words({
   searchParams,
 }: {
-  searchParams: Promise<{ domain?: string }>;
+  searchParams: Promise<{
+    domain?: string;
+    language?: string;
+    subDomain?: string;
+  }>;
 }) {
-  const { domain } = await searchParams;
+  const { domain, language, subDomain } = await searchParams;
 
   const domainsRes = await fetch("http://localhost:3000/api/domains", {
     cache: "no-store",
   });
   const domains: string[] = await domainsRes.json();
+  const languagesRes = await fetch("http://localhost:3000/api/languages", {
+    cache: "no-store",
+  });
+  const languages: string[] = await languagesRes.json();
+  const subDomainsRes = await fetch("http://localhost:3000/api/sub-domains", {
+    cache: "no-store",
+  });
+  const subDomains: SubDomainEntry[] = await subDomainsRes.json();
+
+  const query = new URLSearchParams();
+  if (domain) query.set("domain", domain);
+  if (language) query.set("language", language);
+  if (subDomain) query.set("subDomain", subDomain);
 
   let words: Word[] = [];
-  let title = "All Words";
+  const res = await fetch(
+    `http://localhost:3000/api/words?${query.toString()}`,
+    {
+      cache: "no-store",
+    },
+  );
+  if (res.ok) {
+    words = await res.json();
+  }
 
+  let title = "All Words";
   if (domain) {
-    const res = await fetch(
-      `http://localhost:3000/api/words?domain=${domain}`,
-      {
-        cache: "no-store",
-      },
-    );
-    if (res.ok) {
-      words = await res.json();
-    }
     title = `Words in ${domain}`;
-  } else {
-    for (const d of domains) {
-      const res = await fetch(`http://localhost:3000/api/words?domain=${d}`, {
-        cache: "no-store",
-      });
-      if (res.ok) {
-        const domainWords: Word[] = await res.json();
-        words.push(...domainWords.map((w) => ({ ...w, domain: d })));
-      }
-    }
+  } else if (language) {
+    title = `Words in ${language}`;
+  } else if (subDomain) {
+    title = `Words in ${subDomain}`;
   }
 
   return (
@@ -68,10 +86,10 @@ export default async function Words({
             </div>
             <form
               method="get"
-              className="flex flex-col gap-3 sm:flex-row sm:items-center"
+              className="grid gap-3 md:grid-cols-[1.5fr_1fr_1fr_0.8fr]"
             >
               <label className="sr-only" htmlFor="domain-filter">
-                Filter domains
+                Filter domain
               </label>
               <select
                 id="domain-filter"
@@ -83,6 +101,38 @@ export default async function Words({
                 {domains.map((d) => (
                   <option key={d} value={d}>
                     {d}
+                  </option>
+                ))}
+              </select>
+              <label className="sr-only" htmlFor="language-filter">
+                Filter language
+              </label>
+              <select
+                id="language-filter"
+                name="language"
+                defaultValue={language ?? ""}
+                className="rounded-2xl border border-slate-300 bg-slate-50 px-4 py-3 text-slate-900 outline-none transition focus:border-sky-500 focus:ring-2 focus:ring-sky-100"
+              >
+                <option value="">All languages</option>
+                {languages.map((lang) => (
+                  <option key={lang} value={lang}>
+                    {lang}
+                  </option>
+                ))}
+              </select>
+              <label className="sr-only" htmlFor="sub-domain-filter">
+                Filter sub-domain
+              </label>
+              <select
+                id="sub-domain-filter"
+                name="subDomain"
+                defaultValue={subDomain ?? ""}
+                className="rounded-2xl border border-slate-300 bg-slate-50 px-4 py-3 text-slate-900 outline-none transition focus:border-sky-500 focus:ring-2 focus:ring-sky-100"
+              >
+                <option value="">All sub-domains</option>
+                {subDomains.map((sub) => (
+                  <option key={`${sub.domain}-${sub.name}`} value={sub.name}>
+                    {sub.name}
                   </option>
                 ))}
               </select>
@@ -110,9 +160,23 @@ export default async function Words({
                 className="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm shadow-slate-200 transition hover:-translate-y-1 hover:shadow-lg"
               >
                 <div className="flex items-start justify-between gap-4">
-                  <h2 className="text-2xl font-semibold text-slate-950">
-                    {w.word}
-                  </h2>
+                  <div>
+                    <h2 className="text-2xl font-semibold text-slate-950">
+                      {w.word}
+                    </h2>
+                    <div className="mt-2 flex flex-wrap gap-2">
+                      {w.language ? (
+                        <span className="rounded-full bg-sky-100 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">
+                          {w.language}
+                        </span>
+                      ) : null}
+                      {w.subDomain ? (
+                        <span className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-emerald-700">
+                          {w.subDomain}
+                        </span>
+                      ) : null}
+                    </div>
+                  </div>
                   {w.domain && !domain ? (
                     <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-slate-600">
                       {w.domain}

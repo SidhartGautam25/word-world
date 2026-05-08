@@ -1,1 +1,64 @@
-[]
+[
+  {
+    "word": "सहर / سحر (Sahar — Dawn)",
+    "explanation": "1. it always carries tension between darkness and light.",
+    "examples": [
+      "ये दाग़ दाग़ उजाला, ये शब-गज़ीदा सहर\nवो इंतज़ार था जिसका, ये वो सहर तो नहीं",
+      "रात भर रोते रहे, अब सहर होने को है\nदिल की वीरानी का क्या, ये तो रहने को है",
+      "रात दिन गर्दिश में हैं सात आसमाँ\nहो रहेगा कुछ न कुछ, घबराएँ क्या\n…\nदेखना तक़दीर की लज्ज़त कि जो उसने कहा\nमैंने ये जाना कि गोया ये भी मेरे दिल में है"
+    ],
+    "language": "hindi or urdu",
+    "subDomain": "Weather & Atmosphere (माहौल)"
+  },
+  {
+    "word": "माह ( maah )",
+    "explanation": "1. chaand\nmaahtaab -> moonlight\n2. माह-ए-तमाम = full moon\n3. ",
+    "examples": [
+      "माह-ए-तमाम सामने है और हम हैं दूर\nदिल को ये फ़ासला भी गवारा नहीं रहा",
+      "तू भी इक माह-ए-कामिल है मगर क्या कीजिए\nदूर इतना है कि देखा भी नहीं जाता तुझे"
+    ],
+    "language": "hindi or urdu",
+    "subDomain": "sky and light system ( upar ka duniya )"
+  },
+  {
+    "word": "सबा / صبا (sabā)",
+    "explanation": "a gentle, soft breeze, dawn, or morning breeze",
+    "examples": [
+      "सबा ने फिर दर-ए-जाँ पर दस्तक दी है\nशायद कोई ख़बर तेरी तरफ़ से आई हो",
+      "गुलों में रंग भरे, बाद-ए-नौबहार चले\nचले भी आओ कि गुलशन का कारोबार चले",
+      "कोई सबा भी नहीं, कोई हवा भी नहीं\nये कैसा शहर है जिसमें कोई सदा भी नहीं"
+    ],
+    "language": "hindi or urdu",
+    "subDomain": "Weather & Atmosphere (माहौल)"
+  },
+  {
+    "word": "गुल (gul)",
+    "explanation": "flower ( mostly rose ) \n-> गुलशन => garden of flowers ( world of beauty )\n-> गुलिस्ताँ (Gulistān) => poetic garden\n-> गुल-ए-तर (Gul-e-tar) — fresh flower\n-> गुल-ए-ख़स्ता (Gul-e-khasta) — wounded flower\n-> गुल-ए-राना (Gul-e-rana) — colorful flower\n-> गुल-ओ-ख़ार (flower & thorn)",
+    "examples": [
+      "पत्ता पत्ता बूटा बूटा हाल हमारा जाने है\nजाने न जाने गुल ही न जाने, बाग़ तो सारा जाने है",
+      "गुलशन में बंदिश-ए-नफ़स-ए-गुल है आजकल\nक्या कहिए दिल की हालत-ए-बेकरार का",
+      "गुलों में रंग भरे, बाद-ए-नौबहार चले\nचले भी आओ कि गुलशन का कारोबार चले"
+    ],
+    "language": "hindi or urdu",
+    "subDomain": "Garden / Growth System (बाग़ / ज़िंदगी)"
+  },
+  {
+    "word": "ख़िज़ाँ / خزاں (khizān)",
+    "explanation": "autumn\n-> ख़िज़ाँ = decay / loss / ending\n-> literal: autumn / season of falling leaves\n-> poetic:=> decline , separation , emotional exhaustion , end of beauty",
+    "examples": [
+      "ये कैसी ख़िज़ाँ है कि हर शजर उदास है\nन कोई रंग, न कोई आवाज़ बाकी है\n-> shajar => tree , plant , shrub"
+    ],
+    "language": "hindi or urdu",
+    "subDomain": "Weather & Atmosphere (माहौल)"
+  },
+  {
+    "word": "सहरा / صحرا (sehra)",
+    "explanation": "-> desert\n-> poetic:=> isolation , endless search , spiritual wandering , absence of life / direction\n-> दश्त = sehra/desert\n-> दश्त-ए-तन्हाई => desert of loneliness\n-> दश्त-ए-जुनूँ => desert of madness\n-> सहरा-नवर्द (Sehra-navard) => wanderer of desert\n-> सराब (Saraab) => mirage\n-> तिश्नगी (Thirst)",
+    "examples": [
+      "सहरा में क्यों न फिरूँ मैं, कि यहाँ कोई नहीं\nशहर की भीड़ में दिल को सुकूँ मिलता नहीं",
+      "दश्त-ए-तन्हाई में ऐ जान-ए-जहाँ लरज़ाँ है\nतेरी आवाज़ के साये, तेरे होंठों के सराब"
+    ],
+    "language": "hindi or urdu",
+    "subDomain": "Earth & Landscape (ज़मीन / सफ़र)"
+  }
+]

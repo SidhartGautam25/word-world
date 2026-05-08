@@ -31,6 +31,18 @@ export default async function Home() {
                 Add Domain
               </Link>
               <Link
+                href="/add-language"
+                className="inline-flex items-center justify-center rounded-full bg-cyan-600 px-5 py-3 text-sm font-semibold text-white shadow-sm shadow-cyan-500/20 transition hover:bg-cyan-700"
+              >
+                Add Language
+              </Link>
+              <Link
+                href="/add-sub-domain"
+                className="inline-flex items-center justify-center rounded-full bg-indigo-600 px-5 py-3 text-sm font-semibold text-white shadow-sm shadow-indigo-500/20 transition hover:bg-indigo-700"
+              >
+                Add Sub-domain
+              </Link>
+              <Link
                 href="/add-word"
                 className="inline-flex items-center justify-center rounded-full bg-emerald-600 px-5 py-3 text-sm font-semibold text-white shadow-sm shadow-emerald-500/20 transition hover:bg-emerald-700"
               >
