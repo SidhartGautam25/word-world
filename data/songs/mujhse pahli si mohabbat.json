@@ -77,6 +77,12 @@
       "color": "green",
       "location": "lyrics",
       "index": 0
+    },
+    {
+      "text": "हयात",
+      "level": "medium",
+      "location": "lyrics",
+      "index": 0
     }
   ]
 }
