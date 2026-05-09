@@ -47,6 +47,20 @@ export default async function Home() {
       description: "Filter words by domain, language, and sub-domain instantly",
       color: "rose",
     },
+    {
+      icon: "🎵",
+      title: "Song Analysis",
+      description:
+        "Add songs with lyrics, concepts, and word meanings for deeper understanding",
+      color: "purple",
+    },
+    {
+      icon: "🏷️",
+      title: "Song Tagging",
+      description:
+        "Categorize songs with custom tags for easy organization and discovery",
+      color: "pink",
+    },
   ];
 
   return (
@@ -63,10 +77,10 @@ export default async function Home() {
                 Master Vocabulary, Organize Knowledge
               </h1>
               <p className="text-lg text-sky-50 max-w-2xl leading-relaxed">
-                Word World is a comprehensive vocabulary management system that
+                Word World is a comprehensive knowledge management system that
                 helps you organize, track, and learn words across multiple
-                domains and languages with rich examples and detailed
-                explanations.
+                domains and languages, while also analyzing songs with lyrics,
+                concepts, and word meanings for deeper understanding.
               </p>
               <div className="flex flex-wrap gap-3 pt-4">
                 <Link
@@ -76,10 +90,16 @@ export default async function Home() {
                   Start Adding Words
                 </Link>
                 <Link
+                  href="/add-song"
+                  className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-base font-semibold text-indigo-600 shadow-lg shadow-indigo-900/30 transition hover:bg-slate-50"
+                >
+                  Start Adding Songs
+                </Link>
+                <Link
                   href="/words"
                   className="inline-flex items-center justify-center rounded-full border-2 border-white px-6 py-3 text-base font-semibold text-white transition hover:bg-white/10"
                 >
-                  View All Words
+                  View All Content
                 </Link>
               </div>
             </div>
@@ -130,11 +150,11 @@ export default async function Home() {
               Get Started
             </h2>
             <p className="mt-2 text-slate-600">
-              Choose an action to begin organizing your vocabulary
+              Choose an action to begin organizing your vocabulary and songs
             </p>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-8">
             <Link
               href="/add-domain"
               className="group rounded-2xl border-2 border-sky-200 bg-sky-50 p-6 text-center transition hover:bg-sky-100 hover:border-sky-400"
@@ -180,6 +200,28 @@ export default async function Home() {
             </Link>
 
             <Link
+              href="/add-tag"
+              className="group rounded-2xl border-2 border-purple-200 bg-purple-50 p-6 text-center transition hover:bg-purple-100 hover:border-purple-400"
+            >
+              <div className="text-3xl mb-2">🏷️</div>
+              <p className="font-semibold text-slate-950 group-hover:text-purple-700">
+                Add Tag
+              </p>
+              <p className="text-sm text-slate-600 mt-1">Create song tag</p>
+            </Link>
+
+            <Link
+              href="/add-song"
+              className="group rounded-2xl border-2 border-pink-200 bg-pink-50 p-6 text-center transition hover:bg-pink-100 hover:border-pink-400"
+            >
+              <div className="text-3xl mb-2">🎵</div>
+              <p className="font-semibold text-slate-950 group-hover:text-pink-700">
+                Add Song
+              </p>
+              <p className="text-sm text-slate-600 mt-1">Add new song</p>
+            </Link>
+
+            <Link
               href="/words"
               className="group rounded-2xl border-2 border-violet-200 bg-violet-50 p-6 text-center transition hover:bg-violet-100 hover:border-violet-400"
             >
@@ -188,6 +230,17 @@ export default async function Home() {
                 View Words
               </p>
               <p className="text-sm text-slate-600 mt-1">Browse all words</p>
+            </Link>
+
+            <Link
+              href="/songs"
+              className="group rounded-2xl border-2 border-orange-200 bg-orange-50 p-6 text-center transition hover:bg-orange-100 hover:border-orange-400"
+            >
+              <div className="text-3xl mb-2">🎼</div>
+              <p className="font-semibold text-slate-950 group-hover:text-orange-700">
+                View Songs
+              </p>
+              <p className="text-sm text-slate-600 mt-1">Browse all songs</p>
             </Link>
           </div>
         </section>
