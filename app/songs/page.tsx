@@ -2,7 +2,7 @@ import Link from "next/link";
 
 interface Highlight {
   text: string;
-  color: "yellow" | "green" | "blue" | "pink";
+  level: "easy" | "medium" | "hard";
   location: "lyrics" | "concepts";
   index: number;
 }
@@ -17,6 +17,70 @@ interface Song {
   author: string;
   date: string;
   highlights?: Highlight[];
+}
+
+function renderHighlightedText(
+  text: string,
+  highlights: Highlight[],
+  location: "lyrics" | "concepts",
+  index: number = 0,
+) {
+  if (!highlights || highlights.length === 0) return text;
+
+  const relevantHighlights = highlights.filter(
+    (h) => h.location === location && h.index === index,
+  );
+
+  if (relevantHighlights.length === 0) return text;
+
+  // Sort highlights by length descending to handle overlapping highlights (though unlikely with current UI)
+  const sortedHighlights = [...relevantHighlights].sort(
+    (a, b) => b.text.length - a.text.length,
+  );
+
+  // Escape special characters for regex
+  const escapeRegExp = (string: string) => {
+    return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  };
+
+  const pattern = sortedHighlights
+    .map((h) => `(${escapeRegExp(h.text)})`)
+    .join("|");
+  const regex = new RegExp(pattern, "gi");
+
+  const parts = text.split(regex);
+
+  return parts.map((part, i) => {
+    if (!part) return null;
+
+    const highlight = sortedHighlights.find(
+      (h) => h.text.toLowerCase() === part.toLowerCase(),
+    );
+
+    if (highlight) {
+      const level = highlight.level || (highlight as any).color || "medium";
+      const colorClass =
+        level === "easy" || level === "green"
+          ? "bg-green-200"
+          : level === "medium" || level === "yellow"
+            ? "bg-yellow-200"
+            : level === "hard" || level === "red" || level === "pink"
+              ? "bg-red-200"
+              : "bg-blue-200";
+
+      return (
+        <span
+          key={i}
+          className={`${colorClass} px-1 rounded transition-colors duration-200`}
+          title={level.charAt(0).toUpperCase() + level.slice(1)}
+        >
+          {part}
+        </span>
+      );
+    }
+
+    return part;
+  });
 }
 
 export default async function Songs({
@@ -174,7 +238,11 @@ export default async function Songs({
                       Lyrics
                     </h3>
                     <div className="rounded-xl bg-blue-50 p-4 text-slate-700 border border-blue-200 whitespace-pre-wrap break-words">
-                      {song.lyrics}
+                      {renderHighlightedText(
+                        song.lyrics,
+                        song.highlights || [],
+                        "lyrics",
+                      )}
                     </div>
                   </div>
 
@@ -189,7 +257,12 @@ export default async function Songs({
                             key={j}
                             className="rounded-lg bg-amber-50 p-4 border border-amber-300 text-slate-700 whitespace-pre-wrap break-words"
                           >
-                            {concept}
+                            {renderHighlightedText(
+                              concept,
+                              song.highlights || [],
+                              "concepts",
+                              j,
+                            )}
                           </div>
                         ))}
                       </div>
