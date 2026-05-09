@@ -7,7 +7,7 @@ const songsDir = path.join(process.cwd(), "data", "songs");
 interface WordMeaning {
   word: string;
   meaning: string;
-  example?: string;
+  examples: string[];
 }
 
 interface Song {
@@ -37,10 +37,9 @@ export async function GET(request: NextRequest) {
       songName: string; 
       frequency: number; 
       meaning?: string; 
-      example?: string 
+      examples?: string[] 
     }> = [];
 
-    // Escape special characters for regex
     const escapedWord = word.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     const regex = new RegExp(`(?:^|[^\\p{L}\\p{M}])(${escapedWord})(?:$|[^\\p{L}\\p{M}])`, "gui");
 
@@ -50,23 +49,15 @@ export async function GET(request: NextRequest) {
       const songName = path.basename(file, ".json");
 
       let count = 0;
-      
-      // Check lyrics
       const lyricsMatches = songData.lyrics.matchAll(regex);
-      for (const _ of lyricsMatches) {
-        count++;
-      }
+      for (const _ of lyricsMatches) count++;
 
-      // Check concepts
       for (const concept of songData.concepts) {
         const conceptMatches = concept.matchAll(regex);
-        for (const _ of conceptMatches) {
-          count++;
-        }
+        for (const _ of conceptMatches) count++;
       }
 
       if (count > 0) {
-        // Find meaning and example if they exist in this song
         const wordInfo = songData.words?.find(
           (w) => w.word.toLowerCase() === word.toLowerCase()
         );
@@ -75,14 +66,12 @@ export async function GET(request: NextRequest) {
           songName,
           frequency: count,
           meaning: wordInfo?.meaning,
-          example: wordInfo?.example,
+          examples: wordInfo?.examples || (wordInfo as any).example ? [(wordInfo as any).example] : [],
         });
       }
     }
 
-    // Sort by frequency descending
     results.sort((a, b) => b.frequency - a.frequency);
-
     return NextResponse.json(results);
   } catch (error) {
     console.error("Word search error:", error);

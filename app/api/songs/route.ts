@@ -7,7 +7,7 @@ const songsDir = path.join(process.cwd(), "data", "songs");
 interface WordMeaning {
   word: string;
   meaning: string;
-  example?: string;
+  examples: string[];
 }
 
 interface Highlight {

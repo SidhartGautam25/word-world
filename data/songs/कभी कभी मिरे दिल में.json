@@ -5,102 +5,112 @@
     {
       "word": "शादाब",
       "meaning": "हरा-भरा, सरसब्ज़, ताज़ा या तर-ओ-ताज़ा",
-      "example": "\"बाहर बाग़ का शादाब मंज़र साफ़ नज़र आ रहा है।\" (हरा-भरा दृश्य)"
+      "examples": [
+        "\"बाहर बाग़ का शादाब मंज़र साफ़ नज़र आ रहा है।\" (हरा-भरा दृश्य)",
+        "\"इस बग़ीचे के सभी पौधे शादाब हैं।\" (ताज़ा/सिंचित)"
+      ]
     },
     {
       "word": "तीरगी",
-      "meaning": "",
-      "example": ""
+      "meaning": "अंधेरा या अंधकार",
+      "examples": [
+        "तीरगी-ए-शब: रात का अंधेरा",
+        "तीरगी-ए-शाम-ए-ग़म: दुख की शाम का अंधेरा"
+      ]
     },
     {
       "word": "ज़ीस्त",
-      "meaning": "",
-      "example": ""
+      "meaning": "जीवन, ज़िंदगी, हयात या अस्तित्व",
+      "examples": [
+        "ज़ीस्त की सबसे बड़ी हक़ीक़त यह है कि वक़्त का पहिया हमेशा चलता रहता है",
+        "मसाफे-ज़ीस्त (Masaaf-e-Zeest): जीवन-संघर्ष",
+        "नेमते-ज़ीस्त (Nemat-e-Zeest): जीवन का उपहार/सौगात।"
+      ]
     },
     {
       "word": "शुआ'ओं",
       "meaning": "",
-      "example": ""
+      "examples": []
     },
     {
       "word": "जमाल",
       "meaning": "",
-      "example": ""
+      "examples": []
     },
     {
       "word": "रानाइयों",
       "meaning": "",
-      "example": ""
+      "examples": []
     },
     {
       "word": "गुदाज़-बदन",
       "meaning": "",
-      "example": ""
+      "examples": []
     },
     {
       "word": "महव",
       "meaning": "",
-      "example": ""
+      "examples": []
     },
     {
       "word": "हलावत",
       "meaning": "",
-      "example": ""
+      "examples": []
     },
     {
       "word": "हयात",
       "meaning": "",
-      "example": ""
+      "examples": []
     },
     {
       "word": "बरहना",
       "meaning": "",
-      "example": ""
+      "examples": []
     },
     {
       "word": "आलम",
       "meaning": "",
-      "example": ""
+      "examples": []
     },
     {
       "word": "मुहीब",
       "meaning": "",
-      "example": ""
+      "examples": []
     },
     {
       "word": "सम्त",
       "meaning": "",
-      "example": ""
+      "examples": []
     },
     {
       "word": "हयात",
       "meaning": "",
-      "example": ""
+      "examples": []
     },
     {
       "word": "पुर-हौल",
       "meaning": "",
-      "example": ""
+      "examples": []
     },
     {
       "word": "ख़ारज़ारों",
       "meaning": "",
-      "example": ""
+      "examples": []
     },
     {
       "word": "जादा-ए-मंज़िल",
       "meaning": "",
-      "example": ""
+      "examples": []
     },
     {
       "word": "ख़लाओं",
       "meaning": "",
-      "example": ""
+      "examples": []
     },
     {
       "word": "हम-नफ़स",
       "meaning": "",
-      "example": ""
+      "examples": []
     }
   ],
   "lang": "hindi or urdu",
