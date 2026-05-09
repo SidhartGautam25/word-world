@@ -32,7 +32,7 @@ export async function GET(request: NextRequest) {
     const escapedWord = word.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     // Boundary check for word matching (handle unicode/hindi characters by using a simpler boundary or space/punctuation check)
     // Using a more generic approach since \b doesn't work well with non-latin chars
-    const regex = new RegExp(`(?:^|[^\\p{L}])(${escapedWord})(?:$|[^\\p{L}])`, "gui");
+    const regex = new RegExp(`(?:^|[^\\p{L}\\p{M}])(${escapedWord})(?:$|[^\\p{L}\\p{M}])`, "gui");
 
     for (const file of songFiles) {
       const songPath = path.join(songsDir, file);
