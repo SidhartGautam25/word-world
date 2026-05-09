@@ -7,6 +7,7 @@ const songsDir = path.join(process.cwd(), "data", "songs");
 interface WordMeaning {
   word: string;
   meaning: string;
+  example?: string;
 }
 
 interface Highlight {
@@ -72,7 +73,7 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
-    const { name, lyrics, concepts, words, lang, tag, author } =
+    const { name, lyrics, concepts, words, lang, tag, author, highlights } =
       await request.json();
 
     if (
@@ -87,16 +88,6 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Invalid input" }, { status: 400 });
     }
 
-    // Validate words array structure
-    for (const wordItem of words) {
-      if (!wordItem.word || !wordItem.meaning) {
-        return NextResponse.json(
-          { error: "Each word must have word and meaning" },
-          { status: 400 },
-        );
-      }
-    }
-
     const songFile = path.join(songsDir, `${name}.json`);
     if (fs.existsSync(songFile)) {
       return NextResponse.json(
@@ -108,13 +99,12 @@ export async function POST(request: NextRequest) {
     const songData: Song = {
       lyrics,
       concepts: concepts.filter((c: string) => c.trim()),
-      words: words.filter(
-        (w: WordMeaning) => w.word.trim() && w.meaning.trim(),
-      ),
+      words: words.filter((w: WordMeaning) => w.word.trim()),
       lang,
       tag,
       author,
       date: new Date().toISOString(),
+      highlights: highlights || [],
     };
 
     fs.writeFileSync(songFile, JSON.stringify(songData, null, 2));
@@ -152,16 +142,6 @@ export async function PUT(request: NextRequest) {
       return NextResponse.json({ error: "Invalid input" }, { status: 400 });
     }
 
-    // Validate words array structure
-    for (const wordItem of words) {
-      if (!wordItem.word || !wordItem.meaning) {
-        return NextResponse.json(
-          { error: "Each word must have word and meaning" },
-          { status: 400 },
-        );
-      }
-    }
-
     const oldSongFile = path.join(songsDir, `${oldName}.json`);
     if (!fs.existsSync(oldSongFile)) {
       return NextResponse.json({ error: "Song not found" }, { status: 404 });
@@ -180,18 +160,21 @@ export async function PUT(request: NextRequest) {
       fs.unlinkSync(oldSongFile);
     }
 
-    const oldSongData: Song = JSON.parse(fs.readFileSync(oldSongFile, "utf-8"));
+    // Read date from existing file
+    let creationDate = new Date().toISOString();
+    try {
+        const existingData = JSON.parse(fs.readFileSync(path.join(songsDir, `${oldName}.json`), "utf-8"));
+        creationDate = existingData.date;
+    } catch {}
 
     const songData: Song = {
       lyrics,
       concepts: concepts.filter((c: string) => c.trim()),
-      words: words.filter(
-        (w: WordMeaning) => w.word.trim() && w.meaning.trim(),
-      ),
+      words: words.filter((w: WordMeaning) => w.word.trim()),
       lang,
       tag,
       author,
-      date: oldSongData.date,
+      date: creationDate,
       highlights: highlights || [],
     };
 

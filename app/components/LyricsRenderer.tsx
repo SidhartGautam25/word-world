@@ -10,11 +10,18 @@ interface Highlight {
   index: number;
 }
 
+interface WordMeaning {
+  word: string;
+  meaning: string;
+  example?: string;
+}
+
 interface LyricsRendererProps {
   text: string;
   highlights: Highlight[];
   location: "lyrics" | "concepts";
   index?: number;
+  currentSongWords?: WordMeaning[];
 }
 
 export default function LyricsRenderer({
@@ -22,6 +29,7 @@ export default function LyricsRenderer({
   highlights,
   location,
   index = 0,
+  currentSongWords,
 }: LyricsRendererProps) {
   const [selectedWord, setSelectedWord] = useState<string | null>(null);
 
@@ -119,6 +127,7 @@ export default function LyricsRenderer({
       {selectedWord && (
         <WordAnalysisSidebar
           word={selectedWord}
+          currentSongWords={currentSongWords}
           onClose={() => setSelectedWord(null)}
         />
       )}

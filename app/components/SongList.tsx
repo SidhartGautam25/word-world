@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import LyricsRenderer from "./LyricsRenderer";
 
 interface Highlight {
   text: string;
@@ -13,7 +14,7 @@ interface Song {
   name: string;
   lyrics: string;
   concepts: string[];
-  words: Array<{ word: string; meaning: string }>;
+  words: Array<{ word: string; meaning: string; example?: string }>;
   lang: string;
   tag: string;
   author: string;
@@ -46,8 +47,8 @@ export default function SongList({ songs }: SongListProps) {
           <div className="flex flex-col h-full">
             <div className="flex-1 space-y-4">
               <div className="flex justify-between items-start gap-4">
-                <Link
-                  href={`/songs/${encodeURIComponent(song.name)}`}
+                <Link 
+                  href={`/songs/${encodeURIComponent(song.name)}`} 
                   className="flex-1"
                 >
                   <h2 className="text-2xl font-bold text-slate-950 group-hover:text-sky-600 transition-colors line-clamp-2">

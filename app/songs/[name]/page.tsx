@@ -15,7 +15,7 @@ interface Song {
   name: string;
   lyrics: string;
   concepts: string[];
-  words: Array<{ word: string; meaning: string }>;
+  words: Array<{ word: string; meaning: string; example?: string }>;
   lang: string;
   tag: string;
   author: string;
@@ -126,6 +126,7 @@ export default function SongDetail({
                 text={song.lyrics} 
                 highlights={song.highlights || []} 
                 location="lyrics" 
+                currentSongWords={song.words}
               />
             </div>
           </section>
@@ -144,6 +145,7 @@ export default function SongDetail({
                       highlights={song.highlights || []} 
                       location="concepts" 
                       index={j} 
+                      currentSongWords={song.words}
                     />
                   </div>
                 ))}
@@ -166,6 +168,11 @@ export default function SongDetail({
                     <div className="text-slate-600 leading-relaxed">
                       {wordItem.meaning}
                     </div>
+                    {wordItem.example && (
+                      <div className="mt-3 p-3 rounded-xl bg-slate-50 border border-slate-100 text-sm italic text-slate-500">
+                        "{wordItem.example}"
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>
