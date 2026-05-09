@@ -1,5 +1,12 @@
 import Link from "next/link";
 
+interface Highlight {
+  text: string;
+  color: "yellow" | "green" | "blue" | "pink";
+  location: "lyrics" | "concepts";
+  index: number;
+}
+
 interface Song {
   name: string;
   lyrics: string;
@@ -7,7 +14,9 @@ interface Song {
   words: Array<{ word: string; meaning: string }>;
   lang: string;
   tag: string;
+  author: string;
   date: string;
+  highlights?: Highlight[];
 }
 
 export default async function Songs({
@@ -132,10 +141,13 @@ export default async function Songs({
                 className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-sm shadow-slate-200 transition hover:-translate-y-1 hover:shadow-lg"
               >
                 <div className="flex items-start justify-between gap-4 mb-6">
-                  <div>
-                    <h2 className="text-3xl font-semibold text-slate-950 mb-2">
+                  <div className="flex-1">
+                    <h2 className="text-3xl font-semibold text-slate-950 mb-1">
                       {song.name}
                     </h2>
+                    <p className="text-sm text-slate-600 mb-2">
+                      by <span className="font-medium">{song.author}</span>
+                    </p>
                     <div className="flex flex-wrap gap-2">
                       <span className="rounded-full bg-sky-100 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">
                         {song.lang}
@@ -148,6 +160,12 @@ export default async function Songs({
                       </span>
                     </div>
                   </div>
+                  <Link
+                    href={`/edit-song?name=${encodeURIComponent(song.name)}`}
+                    className="rounded-full bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-sm shadow-indigo-500/20 transition hover:bg-indigo-700"
+                  >
+                    Edit
+                  </Link>
                 </div>
 
                 <div className="space-y-6">

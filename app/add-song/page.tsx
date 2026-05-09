@@ -13,6 +13,7 @@ export default function AddSong() {
   const [languages, setLanguages] = useState<string[]>([]);
   const [tags, setTags] = useState<string[]>([]);
   const [name, setName] = useState("");
+  const [author, setAuthor] = useState("");
   const [lyrics, setLyrics] = useState("");
   const [concepts, setConcepts] = useState<string[]>([""]);
   const [words, setWords] = useState<WordMeaning[]>([
@@ -83,6 +84,7 @@ export default function AddSong() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           name,
+          author,
           lyrics,
           concepts: conceptsArray,
           words: wordsArray,
@@ -109,17 +111,31 @@ export default function AddSong() {
           Add a new song with lyrics, concepts, and word meanings.
         </p>
         <form onSubmit={handleSubmit} className="space-y-6">
-          <div>
-            <label className="block text-sm font-medium text-slate-700 mb-2">
-              Song Name
-            </label>
-            <input
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              className="w-full rounded-2xl border border-slate-300 bg-slate-50 px-4 py-3 text-slate-900 outline-none transition focus:border-sky-500 focus:ring-2 focus:ring-sky-100"
-              required
-            />
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div>
+              <label className="block text-sm font-medium text-slate-700 mb-2">
+                Song Name
+              </label>
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="w-full rounded-2xl border border-slate-300 bg-slate-50 px-4 py-3 text-slate-900 outline-none transition focus:border-sky-500 focus:ring-2 focus:ring-sky-100"
+                required
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-slate-700 mb-2">
+                Author
+              </label>
+              <input
+                type="text"
+                value={author}
+                onChange={(e) => setAuthor(e.target.value)}
+                className="w-full rounded-2xl border border-slate-300 bg-slate-50 px-4 py-3 text-slate-900 outline-none transition focus:border-sky-500 focus:ring-2 focus:ring-sky-100"
+                required
+              />
+            </div>
           </div>
 
           <div>

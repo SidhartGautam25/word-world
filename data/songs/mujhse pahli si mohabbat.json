@@ -33,5 +33,50 @@
   ],
   "lang": "hindi or urdu",
   "tag": "gazals and sayari",
-  "date": "2026-05-09T04:56:01.045Z"
+  "author": "faiz ahmad faiz",
+  "date": "2026-05-09T04:56:01.045Z",
+  "highlights": [
+    {
+      "text": "दरख़्शाँ",
+      "color": "yellow",
+      "location": "lyrics",
+      "index": 0
+    },
+    {
+      "text": "ग़म-ए-दहर",
+      "color": "green",
+      "location": "lyrics",
+      "index": 0
+    },
+    {
+      "text": "आलम",
+      "color": "green",
+      "location": "lyrics",
+      "index": 0
+    },
+    {
+      "text": "सबात",
+      "color": "green",
+      "location": "lyrics",
+      "index": 0
+    },
+    {
+      "text": "निगूँ",
+      "color": "green",
+      "location": "lyrics",
+      "index": 0
+    },
+    {
+      "text": "फ़क़त",
+      "color": "green",
+      "location": "lyrics",
+      "index": 0
+    },
+    {
+      "text": "वस्ल",
+      "color": "green",
+      "location": "lyrics",
+      "index": 0
+    }
+  ]
 }
