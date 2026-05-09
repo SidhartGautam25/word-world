@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import LyricsRenderer from "./LyricsRenderer";
 
 interface Highlight {
   text: string;

@@ -4,9 +4,16 @@ import path from "path";
 
 const songsDir = path.join(process.cwd(), "data", "songs");
 
+interface WordMeaning {
+  word: string;
+  meaning: string;
+  example?: string;
+}
+
 interface Song {
   lyrics: string;
   concepts: string[];
+  words: WordMeaning[];
 }
 
 export async function GET(request: NextRequest) {
@@ -26,12 +33,15 @@ export async function GET(request: NextRequest) {
       .readdirSync(songsDir)
       .filter((file) => file.endsWith(".json"));
 
-    const results: Array<{ songName: string; frequency: number }> = [];
+    const results: Array<{ 
+      songName: string; 
+      frequency: number; 
+      meaning?: string; 
+      example?: string 
+    }> = [];
 
     // Escape special characters for regex
     const escapedWord = word.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-    // Boundary check for word matching (handle unicode/hindi characters by using a simpler boundary or space/punctuation check)
-    // Using a more generic approach since \b doesn't work well with non-latin chars
     const regex = new RegExp(`(?:^|[^\\p{L}\\p{M}])(${escapedWord})(?:$|[^\\p{L}\\p{M}])`, "gui");
 
     for (const file of songFiles) {
@@ -56,9 +66,16 @@ export async function GET(request: NextRequest) {
       }
 
       if (count > 0) {
+        // Find meaning and example if they exist in this song
+        const wordInfo = songData.words?.find(
+          (w) => w.word.toLowerCase() === word.toLowerCase()
+        );
+
         results.push({
           songName,
           frequency: count,
+          meaning: wordInfo?.meaning,
+          example: wordInfo?.example,
         });
       }
     }

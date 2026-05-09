@@ -96,7 +96,7 @@ export default function LyricsRenderer({
     return renderClickableWords(text, 0);
   }
 
-  function renderClickableWords(rawText: string, keyPrefix: any) {
+  function renderClickableWords(rawText: string, keyPrefix: string | number) {
     const wordsAndOthers = rawText.split(/([\s\p{P}]+)/gu);
 
     return wordsAndOthers.map((token, i) => {
