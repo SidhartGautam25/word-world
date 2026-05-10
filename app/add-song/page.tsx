@@ -9,18 +9,20 @@ interface WordEntry {
   meaning: string;
   examples: string[];
   variations: string[];
+  collections: string[];
   level: "none" | "easy" | "medium" | "hard";
 }
 
 export default function AddSong() {
   const [languages, setLanguages] = useState<string[]>([]);
   const [tags, setTags] = useState<string[]>([]);
+  const [availableCollections, setAvailableCollections] = useState<string[]>([]);
   const [name, setName] = useState("");
   const [author, setAuthor] = useState("");
   const [lyrics, setLyrics] = useState("");
   const [concepts, setConcepts] = useState<string[]>([""]);
   const [words, setWords] = useState<WordEntry[]>([
-    { word: "", meaning: "", examples: [""], variations: [""], level: "none" },
+    { word: "", meaning: "", examples: [""], variations: [""], collections: [], level: "none" },
   ]);
   const [lang, setLang] = useState("");
   const [tag, setTag] = useState("");
@@ -30,13 +32,14 @@ export default function AddSong() {
   useEffect(() => {
     fetch("/api/languages").then(res => res.json()).then(setLanguages);
     fetch("/api/tags").then(res => res.json()).then(setTags);
+    fetch("/api/collections").then(res => res.json()).then(setAvailableCollections);
   }, []);
 
   const addConcept = () => setConcepts(c => [...c, ""]);
   const updateConcept = (i: number, v: string) => setConcepts(c => c.map((x, j) => j === i ? v : x));
   const removeConcept = (i: number) => setConcepts(c => c.filter((_, j) => j !== i));
 
-  const addWord = () => setWords(w => [...w, { word: "", meaning: "", examples: [""], variations: [""], level: "none" }]);
+  const addWord = () => setWords(w => [...w, { word: "", meaning: "", examples: [""], variations: [""], collections: [], level: "none" }]);
   const updateWord = (i: number, f: keyof WordEntry, v: any) => setWords(w => w.map((x, j) => j === i ? { ...x, [f]: v } : x));
   const removeWord = (i: number) => setWords(w => w.filter((_, j) => j !== i));
 
@@ -60,6 +63,18 @@ export default function AddSong() {
     setWords(words.map((w, i) => i === wordIndex ? { ...w, variations: w.variations.filter((_, j) => j !== vIndex) } : w));
   };
 
+  const toggleCollection = (wordIndex: number, collection: string) => {
+    setWords(words.map((w, i) => {
+      if (i === wordIndex) {
+        const collections = w.collections.includes(collection)
+          ? w.collections.filter(c => c !== collection)
+          : [...w.collections, collection];
+        return { ...w, collections };
+      }
+      return w;
+    }));
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
@@ -69,6 +84,7 @@ export default function AddSong() {
       meaning: w.meaning.trim(),
       examples: w.examples.map(ex => ex.trim()).filter(ex => ex),
       variations: w.variations.map(v => v.trim()).filter(v => v),
+      collections: w.collections,
     }));
     const highlights = words.filter(w => w.word.trim() && w.level !== "none").map(w => ({ text: w.word.trim(), level: w.level as any, location: "lyrics" as const, index: 0 }));
 
@@ -160,6 +176,29 @@ export default function AddSong() {
                           </div>
                         ))}
                       </div>
+                    </div>
+                  </div>
+
+                  <div className="mt-8 pt-6 border-t border-slate-50 space-y-4">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">Collections</label>
+                    <div className="flex flex-wrap gap-2">
+                      {availableCollections.map(coll => (
+                        <button
+                          key={coll}
+                          type="button"
+                          onClick={() => toggleCollection(i, coll)}
+                          className={`px-4 py-2 rounded-xl text-[10px] font-bold transition-all ${
+                            wordItem.collections.includes(coll)
+                              ? "bg-sky-600 text-white shadow-lg shadow-sky-200"
+                              : "bg-slate-50 text-slate-400 hover:bg-slate-100"
+                          }`}
+                        >
+                          {coll}
+                        </button>
+                      ))}
+                      {availableCollections.length === 0 && (
+                        <p className="text-[10px] text-slate-400 italic">No collections available. Add them in the collections page.</p>
+                      )}
                     </div>
                   </div>
 

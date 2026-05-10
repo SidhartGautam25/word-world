@@ -9,6 +9,7 @@ interface WordMeaning {
   meaning: string;
   examples: string[];
   variations: string[]; // Added variations support
+  collections?: string[]; // Added collections support
 }
 
 interface Highlight {
@@ -74,7 +75,8 @@ export async function POST(request: NextRequest) {
       concepts: concepts.filter((c: string) => c.trim()),
       words: words.filter((w: WordMeaning) => w.word.trim()).map(w => ({
         ...w,
-        variations: w.variations || []
+        variations: w.variations || [],
+        collections: w.collections || []
       })),
       lang,
       tag,
@@ -118,7 +120,8 @@ export async function PUT(request: NextRequest) {
       concepts: concepts.filter((c: string) => c.trim()),
       words: words.filter((w: WordMeaning) => w.word.trim()).map(w => ({
         ...w,
-        variations: w.variations || []
+        variations: w.variations || [],
+        collections: w.collections || []
       })),
       lang,
       tag,

@@ -8,6 +8,7 @@ interface WordMeaning {
   meaning: string;
   examples?: string[];
   variations?: string[];
+  collections?: string[];
 }
 
 interface SearchResult {

@@ -99,6 +99,13 @@ export default async function Home() {
               <p className="text-sm font-bold text-slate-900">Tag</p>
             </Link>
             <Link
+              href="/manage-collections"
+              className="flex flex-col items-center justify-center rounded-3xl bg-amber-50 p-6 text-center border border-amber-100 transition hover:bg-amber-100 hover:border-amber-300 group"
+            >
+              <div className="text-3xl mb-3 group-hover:scale-110 transition-transform">📚</div>
+              <p className="text-sm font-bold text-slate-900">Collections</p>
+            </Link>
+            <Link
               href="/add-sub-domain"
               className="flex flex-col items-center justify-center rounded-3xl bg-rose-50 p-6 text-center border border-rose-100 transition hover:bg-rose-100 hover:border-rose-300 group"
             >
