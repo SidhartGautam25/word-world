@@ -34,7 +34,7 @@ export default function LyricsRenderer({
   const [selectedWord, setSelectedWord] = useState<string | null>(null);
 
   const handleWordClick = (word: string) => {
-    const cleanWord = word.replace(/[^\p{L}\p{M}\d]/gu, "");
+    const cleanWord = word.replace(/[^\p{L}\p{M}\d'-]/gu, "");
     if (cleanWord) {
       setSelectedWord(cleanWord);
     }
@@ -97,12 +97,12 @@ export default function LyricsRenderer({
   }
 
   function renderClickableWords(rawText: string, keyPrefix: string | number) {
-    const wordsAndOthers = rawText.split(/([\s\p{P}]+)/gu);
+    const wordsAndOthers = rawText.split(/([\s,!?.;:()"[\]{}]+)/gu);
 
     return wordsAndOthers.map((token, i) => {
       if (!token) return null;
 
-      if (/[\p{L}\p{M}\d]/u.test(token)) {
+      if (/[\p{L}\p{M}\d'-]/u.test(token)) {
         return (
           <span
             key={`${keyPrefix}-${i}`}

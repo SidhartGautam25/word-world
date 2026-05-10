@@ -8,6 +8,7 @@ interface WordMeaning {
   word: string;
   meaning: string;
   examples: string[];
+  variations: string[]; // Added variations support
 }
 
 interface Highlight {
@@ -34,34 +35,20 @@ export async function GET(request: NextRequest) {
     const lang = searchParams.get("lang");
     const tag = searchParams.get("tag");
 
-    if (!fs.existsSync(songsDir)) {
-      return NextResponse.json([]);
-    }
+    if (!fs.existsSync(songsDir)) return NextResponse.json([]);
 
-    const songFiles = fs
-      .readdirSync(songsDir)
-      .filter((file) => file.endsWith(".json"));
-
+    const songFiles = fs.readdirSync(songsDir).filter((file) => file.endsWith(".json"));
     const allSongs: Array<Song & { name: string }> = [];
 
     for (const file of songFiles) {
       const songPath = path.join(songsDir, file);
       const songData: Song = JSON.parse(fs.readFileSync(songPath, "utf-8"));
-      const songName = path.basename(file, ".json");
-
-      allSongs.push({
-        ...songData,
-        name: songName,
-      });
+      allSongs.push({ ...songData, name: path.basename(file, ".json") });
     }
 
     const filteredSongs = allSongs.filter((song) => {
-      if (lang && song.lang !== lang) {
-        return false;
-      }
-      if (tag && song.tag !== tag) {
-        return false;
-      }
+      if (lang && song.lang !== lang) return false;
+      if (tag && song.tag !== tag) return false;
       return true;
     });
 
@@ -73,33 +60,22 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
-    const { name, lyrics, concepts, words, lang, tag, author, highlights } =
-      await request.json();
+    const { name, lyrics, concepts, words, lang, tag, author, highlights } = await request.json();
 
-    if (
-      !name ||
-      !lyrics ||
-      !Array.isArray(concepts) ||
-      !Array.isArray(words) ||
-      !lang ||
-      !tag ||
-      !author
-    ) {
+    if (!name || !lyrics || !Array.isArray(concepts) || !Array.isArray(words) || !lang || !tag || !author) {
       return NextResponse.json({ error: "Invalid input" }, { status: 400 });
     }
 
     const songFile = path.join(songsDir, `${name}.json`);
-    if (fs.existsSync(songFile)) {
-      return NextResponse.json(
-        { error: "Song with this name already exists" },
-        { status: 400 },
-      );
-    }
+    if (fs.existsSync(songFile)) return NextResponse.json({ error: "Already exists" }, { status: 400 });
 
     const songData: Song = {
       lyrics,
       concepts: concepts.filter((c: string) => c.trim()),
-      words: words.filter((w: WordMeaning) => w.word.trim()),
+      words: words.filter((w: WordMeaning) => w.word.trim()).map(w => ({
+        ...w,
+        variations: w.variations || []
+      })),
       lang,
       tag,
       author,
@@ -108,59 +84,29 @@ export async function POST(request: NextRequest) {
     };
 
     fs.writeFileSync(songFile, JSON.stringify(songData, null, 2));
-
     return NextResponse.json({ message: "Song added" });
   } catch {
-    return NextResponse.json({ error: "Failed to add song" }, { status: 500 });
+    return NextResponse.json({ error: "Failed to add" }, { status: 500 });
   }
 }
 
 export async function PUT(request: NextRequest) {
   try {
-    const {
-      oldName,
-      name,
-      lyrics,
-      concepts,
-      words,
-      lang,
-      tag,
-      author,
-      highlights,
-    } = await request.json();
+    const { oldName, name, lyrics, concepts, words, lang, tag, author, highlights } = await request.json();
 
-    if (
-      !oldName ||
-      !name ||
-      !lyrics ||
-      !Array.isArray(concepts) ||
-      !Array.isArray(words) ||
-      !lang ||
-      !tag ||
-      !author
-    ) {
+    if (!oldName || !name || !lyrics || !Array.isArray(concepts) || !Array.isArray(words) || !lang || !tag || !author) {
       return NextResponse.json({ error: "Invalid input" }, { status: 400 });
     }
 
     const oldSongFile = path.join(songsDir, `${oldName}.json`);
-    if (!fs.existsSync(oldSongFile)) {
-      return NextResponse.json({ error: "Song not found" }, { status: 404 });
-    }
+    if (!fs.existsSync(oldSongFile)) return NextResponse.json({ error: "Not found" }, { status: 404 });
 
-    // If name changed, check if new name doesn't exist
     if (oldName !== name) {
       const newSongFile = path.join(songsDir, `${name}.json`);
-      if (fs.existsSync(newSongFile)) {
-        return NextResponse.json(
-          { error: "Song with this name already exists" },
-          { status: 400 },
-        );
-      }
-      // Delete old file
+      if (fs.existsSync(newSongFile)) return NextResponse.json({ error: "Already exists" }, { status: 400 });
       fs.unlinkSync(oldSongFile);
     }
 
-    // Read date from existing file
     let creationDate = new Date().toISOString();
     try {
         const existingData = JSON.parse(fs.readFileSync(path.join(songsDir, `${oldName}.json`), "utf-8"));
@@ -170,7 +116,10 @@ export async function PUT(request: NextRequest) {
     const songData: Song = {
       lyrics,
       concepts: concepts.filter((c: string) => c.trim()),
-      words: words.filter((w: WordMeaning) => w.word.trim()),
+      words: words.filter((w: WordMeaning) => w.word.trim()).map(w => ({
+        ...w,
+        variations: w.variations || []
+      })),
       lang,
       tag,
       author,
@@ -178,14 +127,9 @@ export async function PUT(request: NextRequest) {
       highlights: highlights || [],
     };
 
-    const newSongFile = path.join(songsDir, `${name}.json`);
-    fs.writeFileSync(newSongFile, JSON.stringify(songData, null, 2));
-
-    return NextResponse.json({ message: "Song updated" });
+    fs.writeFileSync(path.join(songsDir, `${name}.json`), JSON.stringify(songData, null, 2));
+    return NextResponse.json({ message: "Updated" });
   } catch {
-    return NextResponse.json(
-      { error: "Failed to update song" },
-      { status: 500 },
-    );
+    return NextResponse.json({ error: "Failed" }, { status: 500 });
   }
 }
