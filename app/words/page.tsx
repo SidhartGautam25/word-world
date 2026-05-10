@@ -66,7 +66,7 @@ export default async function Words({
 
   return (
     <div className="min-h-screen bg-slate-50 p-8 text-slate-900">
-      <div className="mx-auto max-w-5xl space-y-8">
+      <div className="mx-auto max-w-8xl space-y-8">
         <section className="rounded-[2rem] bg-white p-8 shadow-xl shadow-slate-200 ring-1 ring-slate-200">
           <div className="flex flex-col gap-6 sm:gap-4">
             <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
@@ -154,7 +154,7 @@ export default async function Words({
             </p>
           </section>
         ) : (
-          <div className="grid gap-6 lg:grid-cols-2">
+          <div className="grid gap-6 lg:grid-cols-4">
             {words.map((w, i) => (
               <article
                 key={i}

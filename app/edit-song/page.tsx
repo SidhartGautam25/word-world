@@ -70,10 +70,10 @@ export default function EditSong() {
               level: (highlight?.level as any) || "none"
             };
           });
-          
+
           // 2. Find highlights that ARE NOT in the vocabulary list yet
           const vocabularyTexts = new Set(uiWords.map(w => w.word.toLowerCase()));
-          
+
           song.highlights?.forEach((h: any) => {
             if (!vocabularyTexts.has(h.text.toLowerCase())) {
               uiWords.push({
@@ -147,20 +147,20 @@ export default function EditSong() {
       variations: w.variations.map(v => v.trim()).filter(v => v),
       collections: w.collections,
     }));
-    
+
     // Highlights are derived from the vocabulary list
-    const highlights = words.filter(w => w.word.trim() && w.level !== "none").map(w => ({ 
-      text: w.word.trim(), 
-      level: w.level as any, 
-      location: "lyrics" as const, 
-      index: 0 
+    const highlights = words.filter(w => w.word.trim() && w.level !== "none").map(w => ({
+      text: w.word.trim(),
+      level: w.level as any,
+      location: "lyrics" as const,
+      index: 0
     }));
 
     try {
       const res = await fetch("/api/songs", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ oldName: songName, name, author, lyrics, concepts: conceptsArray, words: wordsArray, lang, tag, author, highlights }),
+        body: JSON.stringify({ oldName: songName, name, author, lyrics, concepts: conceptsArray, words: wordsArray, lang, tag, highlights }),
       });
       if (res.ok) router.push("/songs");
       else alert("Failed to update song");
@@ -191,7 +191,7 @@ export default function EditSong() {
               <h3 className="text-xs font-black uppercase tracking-widest text-slate-400">Vocabulary Intelligence</h3>
               <button type="button" onClick={addWord} className="rounded-full bg-slate-950 px-6 py-2.5 text-[10px] font-black text-white hover:bg-sky-600 transition-colors uppercase tracking-widest">+ Add Word</button>
             </div>
-            
+
             <div className="space-y-8">
               {words.map((wordItem, i) => (
                 <div key={i} className="relative rounded-[2.5rem] border-2 border-slate-100 bg-white p-10 shadow-lg group transition-all hover:border-sky-200">
@@ -205,7 +205,7 @@ export default function EditSong() {
                       <input type="text" value={wordItem.meaning} onChange={e => updateWord(i, "meaning", e.target.value)} placeholder="Meaning..." className="w-full rounded-2xl border border-slate-100 bg-slate-50 px-5 py-4 text-sm font-medium outline-none" />
                     </div>
                   </div>
-                  
+
                   <div className="grid gap-8 md:grid-cols-2">
                     <div className="space-y-4">
                       <div className="flex items-center justify-between">
@@ -246,11 +246,10 @@ export default function EditSong() {
                           key={coll}
                           type="button"
                           onClick={() => toggleCollection(i, coll)}
-                          className={`px-4 py-2 rounded-xl text-[10px] font-bold transition-all ${
-                            wordItem.collections.includes(coll)
+                          className={`px-4 py-2 rounded-xl text-[10px] font-bold transition-all ${wordItem.collections.includes(coll)
                               ? "bg-sky-600 text-white shadow-lg shadow-sky-200"
                               : "bg-slate-50 text-slate-400 hover:bg-slate-100"
-                          }`}
+                            }`}
                         >
                           {coll}
                         </button>

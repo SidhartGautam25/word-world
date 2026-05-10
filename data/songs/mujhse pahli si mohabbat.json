@@ -6,61 +6,61 @@
       "word": "दरख़्शाँ",
       "meaning": "चमकदार, प्रकाश से भरा, पुरनूर",
       "examples": [],
-      "variations": []
+      "variations": [],
+      "collections": []
     },
     {
       "word": "हयात",
       "meaning": "जीवन, जिंदगी, अस्तित्व या जान",
       "examples": [],
-      "variations": []
-    },
-    {
-      "word": "Gam-e-dahr",
-      "meaning": "sorrow of world",
-      "examples": [],
-      "variations": []
+      "variations": [],
+      "collections": []
     },
     {
       "word": "आलम",
       "meaning": "विश्व, संसार, दुनिया, जगत्हा, लत, ढंग",
       "examples": [],
-      "variations": []
-    },
-    {
-      "word": "sabaat",
-      "meaning": "अपनी परिस्थिती पर स्थिर और दृढ़ रहने का भाव, स्थिरता, स्थायित्व, स्थैर्य, अविचलता, अडिगता दृढ़ता, दृढ़ता, ठहराव, दृढ़ निश्चय, इरादा ,  धैर्य और शान्ति, सहन शक्ति, बरदाश्त",
-      "examples": [],
-      "variations": []
+      "variations": [],
+      "collections": []
     },
     {
       "word": "फ़क़त",
       "meaning": "केवल, मात्र, अकेला, सिर्फ़, बस, समापन",
       "examples": [],
-      "variations": []
+      "variations": [],
+      "collections": []
     },
     {
       "word": "वस्ल",
       "meaning": "(विशेषतः) प्रेमी-प्रेमिका का मिलना (हिज्र का विलोम)",
       "examples": [],
-      "variations": []
+      "variations": [],
+      "collections": []
     },
     {
       "word": "ग़म-ए-दहर",
-      "meaning": "",
-      "examples": [],
-      "variations": []
+      "meaning": "\"दुनिया का दुःख\", \"संसार की परेशानियाँ\"",
+      "examples": [
+        "ग़म-ए-दौराँ (zamane ka gham), सांसारिक चिंताएँ।"
+      ],
+      "variations": [],
+      "collections": []
     },
     {
       "word": "सबात",
-      "meaning": "",
-      "examples": [],
-      "variations": []
+      "meaning": "अपनी परिस्थिती पर स्थिर और दृढ़ रहने का भाव, स्थिरता, स्थायित्व, स्थैर्य, अविचलता, अडिगता दृढ़ता, दृढ़ता, ठहराव, दृढ़ निश्चय, इरादा ,  धैर्य और शान्ति, सहन शक्ति, बरदाश्त",
+      "examples": [
+        "उनकी बात में 'सबात' नहीं है\" (अर्थात उनकी बात में दृढ़ता/स्थिरता नहीं है)"
+      ],
+      "variations": [],
+      "collections": []
     },
     {
       "word": "निगूँ",
       "meaning": "",
       "examples": [],
-      "variations": []
+      "variations": [],
+      "collections": []
     }
   ],
   "lang": "hindi or urdu",
