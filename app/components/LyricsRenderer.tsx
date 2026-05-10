@@ -22,6 +22,7 @@ interface LyricsRendererProps {
   location: "lyrics" | "concepts";
   index?: number;
   currentSongWords?: WordMeaning[];
+  onWordClick?: (word: string) => void;
 }
 
 export default function LyricsRenderer({
@@ -30,13 +31,18 @@ export default function LyricsRenderer({
   location,
   index = 0,
   currentSongWords,
+  onWordClick,
 }: LyricsRendererProps) {
   const [selectedWord, setSelectedWord] = useState<string | null>(null);
 
   const handleWordClick = (word: string) => {
     const cleanWord = word.replace(/[^\p{L}\p{M}\d'-]/gu, "");
     if (cleanWord) {
-      setSelectedWord(cleanWord);
+      if (onWordClick) {
+        onWordClick(cleanWord);
+      } else {
+        setSelectedWord(cleanWord);
+      }
     }
   };
 

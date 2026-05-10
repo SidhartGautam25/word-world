@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import LyricsRenderer from "../components/LyricsRenderer";
+import WordAddModal from "../components/WordAddModal";
 
 interface WordEntry {
   word: string;
@@ -27,6 +29,7 @@ export default function AddSong() {
   const [lang, setLang] = useState("");
   const [tag, setTag] = useState("");
   const [loading, setLoading] = useState(false);
+  const [activeWordForModal, setActiveWordForModal] = useState<string | null>(null);
   const router = useRouter();
 
   useEffect(() => {
@@ -120,9 +123,22 @@ export default function AddSong() {
             </div>
           </section>
 
-          <section className="space-y-3">
+          <section className="space-y-4">
             <label className="text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Full Lyrics</label>
             <textarea value={lyrics} onChange={e => setLyrics(e.target.value)} rows={10} placeholder="Paste lyrics here..." className="w-full rounded-[2.5rem] border-2 border-slate-50 bg-slate-50 px-8 py-7 outline-none focus:border-sky-500 focus:bg-white transition-all font-serif text-xl leading-relaxed italic" required />
+            {lyrics && (
+              <div className="p-8 rounded-[2rem] bg-slate-50/50 border border-slate-100">
+                <p className="text-[10px] font-black uppercase tracking-widest text-sky-600 mb-4">Quick Add Mode: Click any word below to define it</p>
+                <div className="whitespace-pre-wrap font-serif text-lg leading-relaxed text-slate-700">
+                  <LyricsRenderer 
+                    text={lyrics} 
+                    highlights={words.filter(w => w.level !== "none").map(w => ({ text: w.word, level: w.level as any, location: "lyrics", index: 0 }))} 
+                    location="lyrics"
+                    onWordClick={(word) => setActiveWordForModal(word)}
+                  />
+                </div>
+              </div>
+            )}
           </section>
 
           <section className="space-y-6">
@@ -254,6 +270,18 @@ export default function AddSong() {
           </div>
         </form>
       </div>
+
+      {activeWordForModal && (
+        <WordAddModal
+          word={activeWordForModal}
+          availableCollections={availableCollections}
+          existingWords={words}
+          onClose={() => setActiveWordForModal(null)}
+          onAdd={(newWord) => {
+            setWords(prev => [...prev, newWord]);
+          }}
+        />
+      )}
     </div>
   );
 }

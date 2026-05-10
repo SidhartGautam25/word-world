@@ -3,6 +3,8 @@
 import { useState, useEffect, use } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
+import LyricsRenderer from "../components/LyricsRenderer";
+import WordAddModal from "../components/WordAddModal";
 
 interface WordEntry {
   word: string;
@@ -32,6 +34,7 @@ export default function EditSong() {
   const [tag, setTag] = useState<string>("");
   const [loading, setLoading] = useState(false);
   const [initialLoading, setInitialLoading] = useState(true);
+  const [activeWordForModal, setActiveWordForModal] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -184,7 +187,21 @@ export default function EditSong() {
             <input type="text" value={author} onChange={e => setAuthor(e.target.value)} placeholder="Author" className="w-full rounded-2xl border-2 border-slate-50 bg-slate-50 px-6 py-5 outline-none focus:border-sky-500 transition-all text-lg font-bold" required />
           </section>
 
-          <textarea value={lyrics} onChange={e => setLyrics(e.target.value)} rows={10} className="w-full rounded-[2.5rem] border-2 border-slate-50 bg-slate-50 px-8 py-7 outline-none focus:border-sky-500 font-serif text-xl leading-relaxed italic" required />
+          <div className="space-y-4">
+            <label className="text-xs font-black uppercase tracking-widest text-slate-400">Song Lyrics</label>
+            <textarea value={lyrics} onChange={e => setLyrics(e.target.value)} rows={10} className="w-full rounded-[2.5rem] border-2 border-slate-50 bg-slate-50 px-8 py-7 outline-none focus:border-sky-500 font-serif text-xl leading-relaxed italic" required />
+            <div className="p-8 rounded-[2rem] bg-slate-50/50 border border-slate-100">
+              <p className="text-[10px] font-black uppercase tracking-widest text-sky-600 mb-4">Quick Add Mode: Click any word below to define it</p>
+              <div className="whitespace-pre-wrap font-serif text-lg leading-relaxed text-slate-700">
+                <LyricsRenderer 
+                  text={lyrics} 
+                  highlights={words.filter(w => w.level !== "none").map(w => ({ text: w.word, level: w.level as any, location: "lyrics", index: 0 }))} 
+                  location="lyrics"
+                  onWordClick={(word) => setActiveWordForModal(word)}
+                />
+              </div>
+            </div>
+          </div>
 
           <section className="space-y-6">
             <div className="flex items-center justify-between">
@@ -308,6 +325,18 @@ export default function EditSong() {
           </div>
         </form>
       </div>
+
+      {activeWordForModal && (
+        <WordAddModal
+          word={activeWordForModal}
+          availableCollections={availableCollections}
+          existingWords={words}
+          onClose={() => setActiveWordForModal(null)}
+          onAdd={(newWord) => {
+            setWords(prev => [...prev, newWord]);
+          }}
+        />
+      )}
     </div>
   );
 }
