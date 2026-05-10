@@ -52,11 +52,21 @@ export default function WordAnalysisSidebar({
     if (word) fetchResults();
   }, [word]);
 
-  const fallbackInfo = results.find(r => r.meaning || (r.examples && r.examples.length > 0));
+  // 1. Prioritize current song definition if it exists and is not empty
+  const currentMeaning = currentWordInfo?.meaning?.trim();
+  const currentExamples = currentWordInfo?.examples?.filter(ex => ex.trim() !== "") || [];
+
+  // 2. Find the first non-empty meaning from other songs
+  const globalMeaning = results.find(r => r.meaning && r.meaning.trim() !== "")?.meaning;
   
-  const displayMeaning = currentWordInfo?.meaning || fallbackInfo?.meaning;
-  const displayExamples = currentWordInfo?.examples || fallbackInfo?.examples || [];
-  const isFallback = !currentWordInfo?.meaning && !!fallbackInfo?.meaning;
+  // 3. Find the first non-empty examples list from other songs
+  const globalExamples = results.find(r => r.examples && r.examples.some(ex => ex.trim() !== ""))?.examples?.filter(ex => ex.trim() !== "") || [];
+
+  const displayMeaning = (currentMeaning && currentMeaning !== "") ? currentMeaning : (globalMeaning || "");
+  const displayExamples = (currentExamples.length > 0) ? currentExamples : globalExamples;
+    
+  const isFallback = (!currentMeaning || currentMeaning === "") && (!!globalMeaning && globalMeaning !== "");
+
   const totalFrequency = results.reduce((sum, res) => sum + res.frequency, 0);
 
   return (

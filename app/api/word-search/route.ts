@@ -59,14 +59,18 @@ export async function GET(request: NextRequest) {
 
       if (count > 0) {
         const wordInfo = songData.words?.find(
-          (w) => w.word.toLowerCase() === word.toLowerCase()
+          (w) => w.word.trim().toLowerCase() === word.trim().toLowerCase()
         );
 
         results.push({
           songName,
           frequency: count,
-          meaning: wordInfo?.meaning,
-          examples: wordInfo?.examples || (wordInfo as any).example ? [(wordInfo as any).example] : [],
+          meaning: wordInfo?.meaning || "",
+          examples: (wordInfo?.examples && wordInfo.examples.length > 0) 
+            ? wordInfo.examples 
+            : (wordInfo as any)?.example 
+              ? [(wordInfo as any).example] 
+              : [],
         });
       }
     }
