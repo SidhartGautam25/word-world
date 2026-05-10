@@ -4,31 +4,63 @@
   "words": [
     {
       "word": "दरख़्शाँ",
-      "meaning": "चमकदार, प्रकाश से भरा, पुरनूर"
+      "meaning": "चमकदार, प्रकाश से भरा, पुरनूर",
+      "examples": [],
+      "variations": []
     },
     {
       "word": "हयात",
-      "meaning": "जीवन, जिंदगी, अस्तित्व या जान"
+      "meaning": "जीवन, जिंदगी, अस्तित्व या जान",
+      "examples": [],
+      "variations": []
     },
     {
       "word": "Gam-e-dahr",
-      "meaning": "sorrow of world"
+      "meaning": "sorrow of world",
+      "examples": [],
+      "variations": []
     },
     {
       "word": "आलम",
-      "meaning": "विश्व, संसार, दुनिया, जगत्हा, लत, ढंग"
+      "meaning": "विश्व, संसार, दुनिया, जगत्हा, लत, ढंग",
+      "examples": [],
+      "variations": []
     },
     {
       "word": "sabaat",
-      "meaning": "अपनी परिस्थिती पर स्थिर और दृढ़ रहने का भाव, स्थिरता, स्थायित्व, स्थैर्य, अविचलता, अडिगता दृढ़ता, दृढ़ता, ठहराव, दृढ़ निश्चय, इरादा ,  धैर्य और शान्ति, सहन शक्ति, बरदाश्त"
+      "meaning": "अपनी परिस्थिती पर स्थिर और दृढ़ रहने का भाव, स्थिरता, स्थायित्व, स्थैर्य, अविचलता, अडिगता दृढ़ता, दृढ़ता, ठहराव, दृढ़ निश्चय, इरादा ,  धैर्य और शान्ति, सहन शक्ति, बरदाश्त",
+      "examples": [],
+      "variations": []
     },
     {
       "word": "फ़क़त",
-      "meaning": "केवल, मात्र, अकेला, सिर्फ़, बस, समापन"
+      "meaning": "केवल, मात्र, अकेला, सिर्फ़, बस, समापन",
+      "examples": [],
+      "variations": []
     },
     {
       "word": "वस्ल",
-      "meaning": "(विशेषतः) प्रेमी-प्रेमिका का मिलना (हिज्र का विलोम)"
+      "meaning": "(विशेषतः) प्रेमी-प्रेमिका का मिलना (हिज्र का विलोम)",
+      "examples": [],
+      "variations": []
+    },
+    {
+      "word": "ग़म-ए-दहर",
+      "meaning": "",
+      "examples": [],
+      "variations": []
+    },
+    {
+      "word": "सबात",
+      "meaning": "",
+      "examples": [],
+      "variations": []
+    },
+    {
+      "word": "निगूँ",
+      "meaning": "",
+      "examples": [],
+      "variations": []
     }
   ],
   "lang": "hindi or urdu",
@@ -38,49 +70,31 @@
   "highlights": [
     {
       "text": "दरख़्शाँ",
-      "color": "yellow",
-      "location": "lyrics",
-      "index": 0
-    },
-    {
-      "text": "ग़म-ए-दहर",
-      "color": "green",
-      "location": "lyrics",
-      "index": 0
-    },
-    {
-      "text": "आलम",
-      "color": "green",
-      "location": "lyrics",
-      "index": 0
-    },
-    {
-      "text": "सबात",
-      "color": "green",
-      "location": "lyrics",
-      "index": 0
-    },
-    {
-      "text": "निगूँ",
-      "color": "green",
-      "location": "lyrics",
-      "index": 0
-    },
-    {
-      "text": "फ़क़त",
-      "color": "green",
-      "location": "lyrics",
-      "index": 0
-    },
-    {
-      "text": "वस्ल",
-      "color": "green",
+      "level": "easy",
       "location": "lyrics",
       "index": 0
     },
     {
       "text": "हयात",
       "level": "medium",
+      "location": "lyrics",
+      "index": 0
+    },
+    {
+      "text": "वस्ल",
+      "level": "easy",
+      "location": "lyrics",
+      "index": 0
+    },
+    {
+      "text": "ग़म-ए-दहर",
+      "level": "easy",
+      "location": "lyrics",
+      "index": 0
+    },
+    {
+      "text": "निगूँ",
+      "level": "easy",
       "location": "lyrics",
       "index": 0
     }
