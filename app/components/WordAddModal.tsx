@@ -33,6 +33,23 @@ export default function WordAddModal({
   const [level, setLevel] = useState<"none" | "easy" | "medium" | "hard">("none");
   const [error, setError] = useState<string | null>(null);
 
+  useEffect(() => {
+    const existing = existingWords.find(w => w.word.toLowerCase() === word.toLowerCase());
+    if (existing) {
+      setMeaning(existing.meaning);
+      setExamples(existing.examples.length > 0 ? existing.examples : [""]);
+      setVariations(existing.variations.length > 0 ? existing.variations : [word]);
+      setCollections(existing.collections);
+      setLevel(existing.level);
+    } else {
+      setMeaning("");
+      setExamples([""]);
+      setVariations([word]);
+      setCollections([]);
+      setLevel("none");
+    }
+  }, [word, existingWords]);
+
   const addExample = () => setExamples([...examples, ""]);
   const updateExample = (i: number, v: string) => setExamples(examples.map((x, j) => (j === i ? v : x)));
   const removeExample = (i: number) => setExamples(examples.filter((_, j) => j !== i));
@@ -73,13 +90,17 @@ export default function WordAddModal({
     onClose();
   };
 
+  const isExisting = existingWords.some(w => w.word.toLowerCase() === word.toLowerCase());
+
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm animate-in fade-in duration-300">
       <div className="bg-white w-full max-w-2xl rounded-[3rem] shadow-2xl border border-slate-100 overflow-hidden flex flex-col max-h-[90vh] animate-in zoom-in-95 duration-300">
         {/* Header */}
         <div className="p-8 border-b border-slate-50 flex items-center justify-between bg-slate-50/50">
           <div>
-            <p className="text-[10px] font-black uppercase tracking-[0.4em] text-sky-600 mb-1">New Intelligence</p>
+            <p className="text-[10px] font-black uppercase tracking-[0.4em] text-sky-600 mb-1">
+              {isExisting ? "Existing Intelligence" : "New Intelligence"}
+            </p>
             <h2 className="text-3xl font-black text-slate-950 tracking-tight">Add &quot;{word}&quot;</h2>
           </div>
           <button onClick={onClose} className="rounded-full p-3 hover:bg-white hover:shadow-md text-slate-400 hover:text-slate-950 transition-all">

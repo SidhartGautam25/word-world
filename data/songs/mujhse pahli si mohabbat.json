@@ -61,6 +61,87 @@
       "examples": [],
       "variations": [],
       "collections": []
+    },
+    {
+      "word": "बहीमाना",
+      "meaning": "वहशियाना, पशुओं-जैसा (beast-like), या दरिंदों की तरह , उद्दंडतापूर्ण, भयानक, खौफनाक",
+      "examples": [
+        "उसने बहीमाना तरीके से हमला किया। (उसने जानवरों की तरह क्रूर हमला किया"
+      ],
+      "variations": [
+        "बहीमाना"
+      ],
+      "collections": []
+    },
+    {
+      "word": "तिलिस्म",
+      "meaning": "जादू, इंद्रजाल, माया, या करामात",
+      "examples": [
+        "ऐसा स्थान जहाँ जाकर व्यक्ति रास्ता भूल जाए (तिलिस्मी जगह)।",
+        "तिलिस्मी (Tilism-i): जादुई (Magic/Enchantment)।",
+        "तिलिस्म-ए-होशरुबा: एक प्रसिद्ध काल्पनिक दास्तान, जिसमें तिलिस्म (जादू) के दृश्य होते हैं।"
+      ],
+      "variations": [
+        "तिलिस्म",
+        "तिलिस्मी"
+      ],
+      "collections": []
+    },
+    {
+      "word": "तारीक",
+      "meaning": "अंधकारपूर्ण, अँधेरा, धुंधला या श्याम",
+      "examples": [
+        "तारीक रात\" (अँधेरी रात"
+      ],
+      "variations": [
+        "तारीक"
+      ],
+      "collections": []
+    },
+    {
+      "word": "जा-ब-जा",
+      "meaning": "जगह-जगह, हर जगह, या हर स्थान पर",
+      "examples": [
+        "शहरों में जा-ब-जा (जगह-जगह) तफरीही मुक़ामात होते हैं।"
+      ],
+      "variations": [
+        "जा-ब-जा"
+      ],
+      "collections": []
+    },
+    {
+      "word": "कूचा-ओ-बाज़ार",
+      "meaning": "\"गली और बाज़ार\" (streets and markets) , कूचा: गली, रास्ता (lane/street) , बाज़ार: बाज़ार, ओ: 'और' (and)",
+      "examples": [
+        "मता-ए-कूचा-ओ-बाज़ार: \"गली और बाज़ार की संपत्ति/वस्तु\" (items/goods for sale in streets and markets)।"
+      ],
+      "variations": [
+        "कूचा-ओ-बाज़ार"
+      ],
+      "collections": []
+    },
+    {
+      "word": "अमराज़",
+      "meaning": "रोग-समूह\", \"बहुत से रोग\", \"बीमारियाँ\" या \"व्याधियाँ",
+      "examples": [
+        "मर्ज़' (बीमारी) का बहुवचन (plural)",
+        "इस्बग़ोल कई जिस्मानी अमराज़ को दूर करता है। (ईसबगोल बहुत सी शारीरिक बीमारियों को ठीक करता है)।",
+        "ये भी सच है कि अजल बन के खड़े हैं अमराज़। (शायरी में, बीमारियाँ मौत बनकर खड़ी हैं)।"
+      ],
+      "variations": [
+        "अमराज़"
+      ],
+      "collections": []
+    },
+    {
+      "word": "तन्नूरों",
+      "meaning": "तंदूर (मिट्टी का चूल्हा) , भट्टियाँ",
+      "examples": [],
+      "variations": [
+        "तन्नूरों",
+        "तन्नूर"
+      ],
+      "collections": []
     }
   ],
   "lang": "hindi or urdu",
@@ -81,6 +162,18 @@
       "index": 0
     },
     {
+      "text": "आलम",
+      "level": "easy",
+      "location": "lyrics",
+      "index": 0
+    },
+    {
+      "text": "फ़क़त",
+      "level": "easy",
+      "location": "lyrics",
+      "index": 0
+    },
+    {
       "text": "वस्ल",
       "level": "easy",
       "location": "lyrics",
@@ -93,7 +186,55 @@
       "index": 0
     },
     {
+      "text": "सबात",
+      "level": "easy",
+      "location": "lyrics",
+      "index": 0
+    },
+    {
       "text": "निगूँ",
+      "level": "easy",
+      "location": "lyrics",
+      "index": 0
+    },
+    {
+      "text": "बहीमाना",
+      "level": "easy",
+      "location": "lyrics",
+      "index": 0
+    },
+    {
+      "text": "तिलिस्म",
+      "level": "easy",
+      "location": "lyrics",
+      "index": 0
+    },
+    {
+      "text": "तारीक",
+      "level": "easy",
+      "location": "lyrics",
+      "index": 0
+    },
+    {
+      "text": "जा-ब-जा",
+      "level": "easy",
+      "location": "lyrics",
+      "index": 0
+    },
+    {
+      "text": "कूचा-ओ-बाज़ार",
+      "level": "easy",
+      "location": "lyrics",
+      "index": 0
+    },
+    {
+      "text": "अमराज़",
+      "level": "easy",
+      "location": "lyrics",
+      "index": 0
+    },
+    {
+      "text": "तन्नूरों",
       "level": "easy",
       "location": "lyrics",
       "index": 0

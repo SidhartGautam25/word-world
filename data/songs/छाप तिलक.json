@@ -1,0 +1,75 @@
+{
+  "lyrics": "अपनी छवि बनाइ के जो मैं पी के पास गई,\nजब छवि देखी पीहू की तो अपनी भूल गई।\nछाप तिलक सब छीनी रे मोसे नैना मिलाइ के\nबात अघम कह दीन्हीं रे मोसे नैना मिलाइ के।\n\nबल बल जाऊं मैं तोरे रंगरिजवा\nअपनी सी रंग दीन्हीं रे मोसे नैना मिलाइ के।\nप्रेम बटी का मदवा पिलाय के मतवारी कर दीन्हीं रे\nमोसे नैना मिलाइ के।\n\nगोरी-गोरी बइयां हरी - हरी चुरियां\nबइयां पकर हर लीन्हीं रे मोसे नैना मिलाइ के।\nखुसरो निजाम के बल-बल जइए\nमोहे सुहागन कीन्हीं रे मोसे नैना मिलाइ के।",
+  "concepts": [],
+  "words": [
+    {
+      "word": "अघम",
+      "meaning": "जो कहा न जा सके, वर्णनातीत (Unspeakable/Inexpressible), या बहुत गहरा और गुप्त",
+      "examples": [
+        "आध्यात्मिक संदर्भ में इसका अर्थ ऐसी 'गूढ़ बात' या 'दिव्य ज्ञान' से है जिसे शब्दों में बयान करना मुश्किल हो"
+      ],
+      "variations": [
+        "अघम"
+      ],
+      "collections": [
+        "sufi"
+      ]
+    },
+    {
+      "word": "बल",
+      "meaning": "न्योछावर होना, कुर्बान होना या खुद को पूरी तरह समर्पित कर देना (To sacrifice oneself or be devoted)",
+      "examples": [
+        "\"मैं तो अपने सतगुरु के ज्ञान पर बल-बल जाऊं, जिन्होंने मेरा जीवन संवार दिया।\" (I surrender my soul to my teacher’s wisdom, who transformed my life.)",
+        "\"यशोदा मैया बाल-कृष्ण की नटखट अदाओं पर बल-बल जाती हैं।\" (Mother Yashoda devotes herself entirely to the mischievous acts of little Krishna.)",
+        "\"जब भक्त ने अपने भगवान की सुंदर मूरत देखी, तो वह उन पर बल-बल जाने लगा।\" (When the devotee saw the beautiful idol of his Lord, he felt like sacrificing his whole being out of love.)"
+      ],
+      "variations": [
+        "बल"
+      ],
+      "collections": [
+        "sufi"
+      ]
+    },
+    {
+      "word": "रंगरिजवा",
+      "meaning": "कपड़ा रंगने वाला (Dyer)",
+      "examples": [
+        "यहाँ 'रंगरेज' ईश्वर या गुरु (पीर) को कहा गया है, जो इंसान की रूह (आत्मा) को अपने भक्ति के रंग में रंग देता है।",
+        "मेरे गुरु वह रंगरेज हैं, जिन्होंने मेरी बेरंग ज़िंदगी को ज्ञान के रंग से भर दिया",
+        "\"ओ रंगरेज, मुझे भी अपने प्रेम के उस पक्के रंग में रंग दे जो कभी न छूटे।\" (O Dyer of souls, dye me in that permanent color of love that never fades away.)",
+        "\"समय बड़ा रंगरेज है, पल भर में इंसान की तकदीर बदल देता है।\" (Time is a master dyer; it changes the colors of a person's fate in a moment.)"
+      ],
+      "variations": [
+        "रंगरिजवा",
+        "रंगरेज"
+      ],
+      "collections": [
+        "sufi"
+      ]
+    }
+  ],
+  "lang": "hindi or urdu",
+  "tag": "songs",
+  "author": "अमीर खुसरो",
+  "date": "2026-05-10T12:43:52.107Z",
+  "highlights": [
+    {
+      "text": "अघम",
+      "level": "easy",
+      "location": "lyrics",
+      "index": 0
+    },
+    {
+      "text": "बल",
+      "level": "easy",
+      "location": "lyrics",
+      "index": 0
+    },
+    {
+      "text": "रंगरिजवा",
+      "level": "easy",
+      "location": "lyrics",
+      "index": 0
+    }
+  ]
+}
