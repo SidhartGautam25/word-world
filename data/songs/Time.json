@@ -1,0 +1,99 @@
+{
+  "lyrics": "Ticking away\nThe moments that make up a dull day\nYou fritter and waste the hours\nIn an offhand way\nKicking around on a piece of ground\nIn your hometown\nWaiting for someone\nOr something to show you the way\n\nTired of lying in the sunshine\nStaying home to watch the rain\nYou are young and life is long\nAnd there is time to kill today\nAnd then one day you find\nTen years have got behind you\nNo one told you when to run\nYou missed the starting gun\n\nAnd you run, and you run\nTo catch up with the sun, but it's sinking\nAnd racing around\nTo come up behind you again\nThe sun is the same in a relative way\nBut you're older\nShorter of breath\nAnd one day closer to death\n\nEvery year is getting shorter\nNever seem to find the time\nPlans that either come to naught\nOr half a page of scribbled lines\nHanging on in quiet desperation\nIs the English way\nThe time is gone, the song is over\nThought I'd something more to say\n\n\nHome, home again\nI like to be here when I can\nWhen I come home cold and tired\nIt's good to warm my bones beside the fire\nFar away across the field\nThe tolling of the iron bell\nCalls the faithful to their knees\nTo hear the softly spoken magic spells",
+  "concepts": [],
+  "words": [
+    {
+      "word": "fritter",
+      "meaning": "Noun (Food): A small piece of food—like apple, corn, or meat—coated in batter and deep-fried. , Verb (Waste): To spend or use up gradually and foolishly.",
+      "examples": [
+        "Noun (Food): A small piece of food—like apple, corn, or meat—coated in batter and deep-fried.",
+        "Verb (Waste): To spend or use up gradually and foolishly. =>",
+        "She frittered away her afternoon watching videos",
+        "He frittered his inheritance on small purchases"
+      ],
+      "variations": [
+        "fritter"
+      ],
+      "collections": []
+    },
+    {
+      "word": "offhand",
+      "meaning": "adjective ->  not showing any interest in somebody/something in a way that seems rude , adverb -> without having time to think; immediately",
+      "examples": [
+        "(used about behaviour) not showing any interest in somebody/something in a way that seems rude (आचरण) लापरवाही-भरा (ऐसा कि रूखा लगे) => an offhand manner/voice",
+        "adverb -> without having time to think; immediately बिना तैयारी के तुरंत , I can’t tell you what it’s worth offhand."
+      ],
+      "variations": [
+        "offhand"
+      ],
+      "collections": []
+    },
+    {
+      "word": "naught",
+      "meaning": "nothing, zero, or a state of nonexistence",
+      "examples": [],
+      "variations": [
+        "naught"
+      ],
+      "collections": []
+    },
+    {
+      "word": "scribbled",
+      "meaning": "( verb ) -> to write something quickly and carelessly लापरवाही से जल्दी-जल्दी कुछ लिखना घसीट मारना घसीटना , o make marks with a pen or pencil that are not letters or pictures पेन या पेंसिल से निरर्थक चिह्व बनाना",
+      "examples": [
+        "to scribble a note down on a pad"
+      ],
+      "variations": [
+        "scribbled"
+      ],
+      "collections": []
+    },
+    {
+      "word": "tolling",
+      "meaning": "Ringing Bells: The slow, monotonous ringing of a bell, often for a funeral or to signal a significant event",
+      "examples": [
+        "\"We could hear the church bells tolling in the distance\""
+      ],
+      "variations": [
+        "tolling"
+      ],
+      "collections": []
+    }
+  ],
+  "lang": "english",
+  "tag": "songs",
+  "author": "Roger Waters",
+  "date": "2026-05-11T11:25:35.821Z",
+  "highlights": [
+    {
+      "text": "fritter",
+      "level": "easy",
+      "location": "lyrics",
+      "index": 0
+    },
+    {
+      "text": "offhand",
+      "level": "easy",
+      "location": "lyrics",
+      "index": 0
+    },
+    {
+      "text": "naught",
+      "level": "easy",
+      "location": "lyrics",
+      "index": 0
+    },
+    {
+      "text": "scribbled",
+      "level": "easy",
+      "location": "lyrics",
+      "index": 0
+    },
+    {
+      "text": "tolling",
+      "level": "easy",
+      "location": "lyrics",
+      "index": 0
+    }
+  ]
+}
