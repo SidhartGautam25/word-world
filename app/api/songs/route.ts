@@ -53,7 +53,9 @@ export async function GET(request: NextRequest) {
       return true;
     });
 
+    filteredSongs.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
     return NextResponse.json(filteredSongs);
+
   } catch {
     return NextResponse.json({ error: "Failed to get songs" }, { status: 500 });
   }
