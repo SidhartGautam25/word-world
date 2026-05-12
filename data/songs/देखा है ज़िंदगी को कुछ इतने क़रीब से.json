@@ -1,10 +1,194 @@
 {
   "lyrics": "देखा है ज़िंदगी को कुछ इतने क़रीब से\nचेहरे तमाम लगने लगे हैं अजीब से\n\nऐ रूह-ए-अस्र जाग कहाँ सो रही है तू\nआवाज़ दे रहे हैं पयम्बर सलीब से\n\nइस रेंगती हयात का कब तक उठाएँ बार\nबीमार अब उलझने लगे हैं तबीब से\n\nहर गाम पर है मजमा-ए-उश्शाक़ मुंतज़िर\nमक़्तल की राह मिलती है कू-ए-हबीब से\n\nइस तरह ज़िंदगी ने दिया है हमारा साथ\nजैसे कोई निबाह रहा हो रक़ीब से\n",
   "concepts": [],
-  "words": [],
+  "words": [
+    {
+      "word": "रूह-ए-अस्र",
+      "meaning": "समकालीन समय की आत्मा ,  युग की आत्मा",
+      "examples": [
+        "अस्र: युग/ज़माना/Time/Era",
+        "ऐ रूह-ए-अस्र जाग कहां सो रही है तू"
+      ],
+      "variations": [
+        "रूह-ए-अस्र"
+      ],
+      "collections": []
+    },
+    {
+      "word": "पयम्बर",
+      "meaning": "ईश्वर का संदेशवाहक, पैगंबर, या संदेश लाने वाला दूत (Messenger)",
+      "examples": [],
+      "variations": [
+        "पयम्बर"
+      ],
+      "collections": []
+    },
+    {
+      "word": "सलीब",
+      "meaning": "क्रॉस (Cross), सूली, या फाँसी",
+      "examples": [
+        "ईसा मसीह को सलीब पर चढ़ाया गया था।"
+      ],
+      "variations": [
+        "सलीब"
+      ],
+      "collections": []
+    },
+    {
+      "word": "तबीब",
+      "meaning": "चिकित्सक, डॉक्टर, वैद्य या उपचारक",
+      "examples": [],
+      "variations": [
+        "तबीब"
+      ],
+      "collections": []
+    },
+    {
+      "word": "गाम",
+      "meaning": "क़दम step",
+      "examples": [
+        "हर गाम पर मुश्किलें थीं।",
+        "उसने गाम-गाम पर साथ दिया।",
+        "इश्क़ में हर गाम इम्तिहान बन जाता है।"
+      ],
+      "variations": [
+        "गाम"
+      ],
+      "collections": []
+    },
+    {
+      "word": "मजमा-ए-उश्शाक़",
+      "meaning": "आशिक़ों की भीड़",
+      "examples": [
+        "उश्शाक़ → lovers , आशिक़ → lover",
+        "मजमा -> भीड़ gathering assembly"
+      ],
+      "variations": [
+        "मजमा-ए-उश्शाक़",
+        "उश्शाक़",
+        "मजमा"
+      ],
+      "collections": []
+    },
+    {
+      "word": "मुंतज़िर",
+      "meaning": "इंतज़ार करने वाला",
+      "examples": [
+        "मैं अब भी तेरे जवाब का मुंतज़िर हूँ।",
+        "दरवाज़े पर कोई मुंतज़िर खड़ा था।",
+        "उश्शाक़ दीदार के मुंतज़िर थे।"
+      ],
+      "variations": [
+        "मुंतज़िर"
+      ],
+      "collections": [
+        "lover"
+      ]
+    },
+    {
+      "word": "मक़्तल",
+      "meaning": "क़त्लगाह ,  place of execution , slaughter place",
+      "examples": [
+        "इश्क़ का रास्ता अक्सर मक़्तल तक जाता है।",
+        "वो हँसते हुए मक़्तल में गया।"
+      ],
+      "variations": [
+        "मक़्तल"
+      ],
+      "collections": []
+    },
+    {
+      "word": "कू-ए-हबीब",
+      "meaning": "महबूब की गली",
+      "examples": [
+        "हबीब -> प्रिय , beloved",
+        "कू -> गली , street/lane"
+      ],
+      "variations": [
+        "कू-ए-हबीब"
+      ],
+      "collections": [
+        "lover"
+      ]
+    },
+    {
+      "word": "रक़ीब",
+      "meaning": "प्रेम में प्रतिद्वंद्वी , rival in love , वह व्यक्ति जिसे महबूब तुम पर तरजीह दे",
+      "examples": [
+        "रक़ीब से जलना इश्क़ की पुरानी रस्म है।",
+        "महफ़िल में वो रक़ीब के साथ बैठा था।",
+        "उसने रक़ीब को भी मुस्कुराकर देखा।"
+      ],
+      "variations": [
+        "रक़ीब"
+      ],
+      "collections": []
+    }
+  ],
   "lang": "hindi or urdu",
   "tag": "gazals and sayari",
   "author": "साहिर लुधियानवी",
   "date": "2026-05-12T10:03:24.090Z",
-  "highlights": []
+  "highlights": [
+    {
+      "text": "रूह-ए-अस्र",
+      "level": "easy",
+      "location": "lyrics",
+      "index": 0
+    },
+    {
+      "text": "पयम्बर",
+      "level": "easy",
+      "location": "lyrics",
+      "index": 0
+    },
+    {
+      "text": "सलीब",
+      "level": "easy",
+      "location": "lyrics",
+      "index": 0
+    },
+    {
+      "text": "तबीब",
+      "level": "easy",
+      "location": "lyrics",
+      "index": 0
+    },
+    {
+      "text": "गाम",
+      "level": "easy",
+      "location": "lyrics",
+      "index": 0
+    },
+    {
+      "text": "मजमा-ए-उश्शाक़",
+      "level": "easy",
+      "location": "lyrics",
+      "index": 0
+    },
+    {
+      "text": "मुंतज़िर",
+      "level": "easy",
+      "location": "lyrics",
+      "index": 0
+    },
+    {
+      "text": "मक़्तल",
+      "level": "easy",
+      "location": "lyrics",
+      "index": 0
+    },
+    {
+      "text": "कू-ए-हबीब",
+      "level": "easy",
+      "location": "lyrics",
+      "index": 0
+    },
+    {
+      "text": "रक़ीब",
+      "level": "easy",
+      "location": "lyrics",
+      "index": 0
+    }
+  ]
 }
