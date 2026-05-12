@@ -28,6 +28,7 @@ interface Song {
   author: string;
   date: string;
   highlights?: Highlight[];
+  completed?: boolean;
 }
 
 export async function GET(request: NextRequest) {
@@ -35,6 +36,7 @@ export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url);
     const lang = searchParams.get("lang");
     const tag = searchParams.get("tag");
+    const completed = searchParams.get("completed");
 
     if (!fs.existsSync(songsDir)) return NextResponse.json([]);
 
@@ -44,12 +46,20 @@ export async function GET(request: NextRequest) {
     for (const file of songFiles) {
       const songPath = path.join(songsDir, file);
       const songData: Song = JSON.parse(fs.readFileSync(songPath, "utf-8"));
-      allSongs.push({ ...songData, name: path.basename(file, ".json") });
+      allSongs.push({ 
+        ...songData, 
+        name: path.basename(file, ".json"),
+        completed: songData.completed ?? false 
+      });
     }
 
     const filteredSongs = allSongs.filter((song) => {
       if (lang && song.lang !== lang) return false;
       if (tag && song.tag !== tag) return false;
+      if (completed !== null && completed !== "") {
+        const isCompleted = completed === "true";
+        if ((song.completed ?? false) !== isCompleted) return false;
+      }
       return true;
     });
 
@@ -63,7 +73,7 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
-    const { name, lyrics, concepts, words, lang, tag, author, highlights } = await request.json();
+    const { name, lyrics, concepts, words, lang, tag, author, highlights, completed } = await request.json();
 
     if (!name || !lyrics || !Array.isArray(concepts) || !Array.isArray(words) || !lang || !tag || !author) {
       return NextResponse.json({ error: "Invalid input" }, { status: 400 });
@@ -85,6 +95,7 @@ export async function POST(request: NextRequest) {
       author,
       date: new Date().toISOString(),
       highlights: highlights || [],
+      completed: completed ?? false,
     };
 
     fs.writeFileSync(songFile, JSON.stringify(songData, null, 2));
@@ -96,7 +107,7 @@ export async function POST(request: NextRequest) {
 
 export async function PUT(request: NextRequest) {
   try {
-    const { oldName, name, lyrics, concepts, words, lang, tag, author, highlights } = await request.json();
+    const { oldName, name, lyrics, concepts, words, lang, tag, author, highlights, completed } = await request.json();
 
     if (!oldName || !name || !lyrics || !Array.isArray(concepts) || !Array.isArray(words) || !lang || !tag || !author) {
       return NextResponse.json({ error: "Invalid input" }, { status: 400 });
@@ -130,6 +141,7 @@ export async function PUT(request: NextRequest) {
       author,
       date: creationDate,
       highlights: highlights || [],
+      completed: completed ?? false,
     };
 
     fs.writeFileSync(path.join(songsDir, `${name}.json`), JSON.stringify(songData, null, 2));

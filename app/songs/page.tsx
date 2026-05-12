@@ -18,6 +18,7 @@ interface Song {
   author: string;
   date: string;
   highlights?: Highlight[];
+  completed?: boolean;
 }
 
 export default async function Songs({
@@ -26,9 +27,10 @@ export default async function Songs({
   searchParams: Promise<{
     lang?: string;
     tag?: string;
+    completed?: string;
   }>;
 }) {
-  const { lang, tag } = await searchParams;
+  const { lang, tag, completed } = await searchParams;
 
   const languagesRes = await fetch("http://localhost:3000/api/languages", {
     cache: "no-store",
@@ -42,6 +44,7 @@ export default async function Songs({
   const query = new URLSearchParams();
   if (lang) query.set("lang", lang);
   if (tag) query.set("tag", tag);
+  if (completed) query.set("completed", completed);
 
   let songs: Song[] = [];
   const res = await fetch(
@@ -84,7 +87,7 @@ export default async function Songs({
             </div>
             <form
               method="get"
-              className="grid gap-3 md:grid-cols-[1fr_1fr_0.8fr]"
+              className="grid gap-3 md:grid-cols-[1fr_1fr_1fr_0.8fr]"
             >
               <label className="sr-only" htmlFor="lang-filter">
                 Filter language
@@ -117,6 +120,19 @@ export default async function Songs({
                     {tagItem}
                   </option>
                 ))}
+              </select>
+              <label className="sr-only" htmlFor="completed-filter">
+                Filter completion
+              </label>
+              <select
+                id="completed-filter"
+                name="completed"
+                defaultValue={completed ?? ""}
+                className="rounded-2xl border border-slate-300 bg-slate-50 px-4 py-3 text-slate-900 outline-none transition focus:border-sky-500 focus:ring-2 focus:ring-sky-100"
+              >
+                <option value="">All Status</option>
+                <option value="true">Completed</option>
+                <option value="false">Incomplete</option>
               </select>
               <button
                 type="submit"

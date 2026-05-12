@@ -21,6 +21,7 @@ interface Song {
   author: string;
   date: string;
   highlights?: Highlight[];
+  completed?: boolean;
 }
 
 export default function SongDetail({
@@ -50,6 +51,39 @@ export default function SongDetail({
 
     fetchSong();
   }, [decodedName]);
+
+  const toggleCompleted = async () => {
+    if (!song) return;
+    
+    const updatedStatus = !song.completed;
+    
+    try {
+      const res = await fetch("/api/songs", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          oldName: song.name,
+          name: song.name,
+          lyrics: song.lyrics,
+          concepts: song.concepts,
+          words: song.words,
+          lang: song.lang,
+          tag: song.tag,
+          author: song.author,
+          highlights: song.highlights,
+          completed: updatedStatus,
+        }),
+      });
+
+      if (res.ok) {
+        setSong({ ...song, completed: updatedStatus });
+      }
+    } catch (error) {
+      console.error("Failed to update song status:", error);
+    }
+  };
 
   if (loading) {
     return (
@@ -105,12 +139,33 @@ export default function SongDetail({
               </span>
             </div>
           </div>
-          <Link
-            href={`/edit-song?name=${encodeURIComponent(song.name)}`}
-            className="inline-flex items-center justify-center rounded-full bg-indigo-600 px-6 py-3 text-sm font-bold text-white shadow-lg shadow-indigo-500/20 transition hover:bg-indigo-700 hover:-translate-y-0.5"
-          >
-            Edit Song
-          </Link>
+          <div className="flex flex-wrap gap-4">
+            <button
+              onClick={toggleCompleted}
+              className={`inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-bold transition hover:-translate-y-0.5 shadow-lg ${
+                song.completed 
+                  ? "bg-emerald-100 text-emerald-700 hover:bg-emerald-200 shadow-emerald-500/10" 
+                  : "bg-slate-200 text-slate-700 hover:bg-slate-300 shadow-slate-500/10"
+              }`}
+            >
+              {song.completed ? (
+                <>
+                  <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  Completed
+                </>
+              ) : (
+                "Mark as Completed"
+              )}
+            </button>
+            <Link
+              href={`/edit-song?name=${encodeURIComponent(song.name)}`}
+              className="inline-flex items-center justify-center rounded-full bg-indigo-600 px-6 py-3 text-sm font-bold text-white shadow-lg shadow-indigo-500/20 transition hover:bg-indigo-700 hover:-translate-y-0.5"
+            >
+              Edit Song
+            </Link>
+          </div>
         </header>
 
         <div className="grid gap-10 lg:grid-cols-1">

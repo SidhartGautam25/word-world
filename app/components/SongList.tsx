@@ -19,6 +19,7 @@ interface Song {
   author: string;
   date: string;
   highlights?: Highlight[];
+  completed?: boolean;
 }
 
 interface SongListProps {
@@ -41,7 +42,7 @@ export default function SongList({ songs }: SongListProps) {
       {songs.map((song, i) => (
         <article
           key={i}
-          className="group rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm shadow-slate-200 transition-all hover:shadow-xl hover:-translate-y-1"
+          className={`group rounded-[2rem] border ${song.completed ? 'border-emerald-500 bg-emerald-50/30' : 'border-slate-200 bg-white'} p-6 shadow-sm shadow-slate-200 transition-all hover:shadow-xl hover:-translate-y-1`}
         >
           <div className="flex flex-col h-full">
             <div className="flex-1 space-y-4">
