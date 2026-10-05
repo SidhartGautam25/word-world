@@ -1,0 +1,77 @@
+{
+  "lyrics": "न तू ज़मीं के लिए है न आसमाँ के लिए\nतिरा वजूद है अब सिर्फ़ दास्ताँ के लिए\n\nपलट के सू-ए-चमन देखने से क्या होगा\nवो शाख़ ही न रही जो थी आशियाँ के लिए\n\nग़रज़-परस्त जहाँ में वफ़ा तलाश न कर\nये शय बनी थी किसी दूसरे जहाँ के लिए\n",
+  "concepts": [],
+  "words": [
+    {
+      "word": "सू-ए-चमन",
+      "meaning": "'बगीचे की ओर' या 'चमन की तरफ' होता है",
+      "examples": [
+        "सू-ए (Su-e): दिशा या ओर (Towards)"
+      ],
+      "variations": [
+        "सू-ए-चमन"
+      ],
+      "collections": []
+    },
+    {
+      "word": "शाख़",
+      "meaning": "पेड़ की डाल या टहनी: वृक्ष के तने से निकली हुई शाखा",
+      "examples": [],
+      "variations": [
+        "शाख़"
+      ],
+      "collections": []
+    },
+    {
+      "word": "ग़रज़-परस्त",
+      "meaning": "स्वार्थी (Selfish) या मतलबी",
+      "examples": [
+        "ग़रज़: मतलब, ज़रूरत या उद्देश्य"
+      ],
+      "variations": [
+        "ग़रज़-परस्त"
+      ],
+      "collections": []
+    },
+    {
+      "word": "शय",
+      "meaning": "किसी वस्तु, चीज़, या पदार्थ।",
+      "examples": [],
+      "variations": [
+        "शय"
+      ],
+      "collections": []
+    }
+  ],
+  "lang": "hindi or urdu",
+  "tag": "gazals and sayari",
+  "author": "साहिर लुधियानवी",
+  "date": "2026-05-17T20:42:00.138Z",
+  "highlights": [
+    {
+      "text": "सू-ए-चमन",
+      "level": "easy",
+      "location": "lyrics",
+      "index": 0
+    },
+    {
+      "text": "शाख़",
+      "level": "easy",
+      "location": "lyrics",
+      "index": 0
+    },
+    {
+      "text": "ग़रज़-परस्त",
+      "level": "easy",
+      "location": "lyrics",
+      "index": 0
+    },
+    {
+      "text": "शय",
+      "level": "easy",
+      "location": "lyrics",
+      "index": 0
+    }
+  ],
+  "completed": true
+}
